@@ -1,0 +1,109 @@
+<div class="container-fluid" style="background-color: #F9F8FF;">
+  <div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded border my-3">
+    <div class="row p-3">
+      <form [formGroup]="uploadform" (ngSubmit)="onSubmit()" >
+        <h1 class="text-center">Update Course</h1>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="course_name" class="col-form-label">Course Name</label>
+            <input type="text" class="form-control" formControlName="course_name"/>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <label for="category_id" class="col-form-label">Select Categories</label>
+            <select class="form-select" formControlName="category_id" id="category_id" name="category_id">
+              <option value="" disabled>Select Categories</option>
+              <option *ngFor="let category of showCategorydata" [value]="category._id">
+                {{ category.category_name }}
+              </option>
+            </select>
+          </div>
+          
+
+          <!-- <div class="col-sm-12 col-md-6 col-lg-6">
+            <label for="event_categories" class="col-form-label">Select Categories</label>
+            <select class="form-select" aria-label="Default select example" id="event_categories"
+            formControlName="event_categories" name="event_categories">
+              <option selected>Select Categories</option>
+              <option *ngFor="let category of showCategorydata" [value]="category._id">
+                {{ category.category_name }}
+              </option>
+            </select>
+          </div> -->
+
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <label for="online_offline" class="col-form-label">Mode Online/Offline</label>
+            <select class="form-select" id="online_offline" formControlName="online_offline">
+              <option value="" disabled>Select Mode</option>
+              <option value="Online">Online</option>
+              <option value="Offline">Offline</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="price" class="col-form-label">Price</label>
+            <input type="text" class="form-control" id="price" formControlName="price" />
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="offer_prize" class="col-form-label">Offer Prize</label>
+            <input type="text" class="form-control" id="offer_prize" formControlName="offer_prize" />
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="start_date" class="col-form-label">Start Date</label>
+            <input type="date" class="form-control" id="start_date" formControlName="start_date" />
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="end_date" class="col-form-label">End Date</label>
+            <input type="date" class="form-control" id="end_date" formControlName="end_date" />
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="start_time" class="col-form-label">Start Time</label>
+            <input type="time" class="form-control" id="start_time" formControlName="start_time" />
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="end_time" class="col-form-label">End Time</label>
+            <input type="time" class="form-control" id="end_time" formControlName="end_time" />
+          </div>
+
+          <div class="mb-3 col-sm-12 col-md-6 col-lg-6">
+            <label for="thumbnail_image" class="col-form-label">Upload Course Image</label><br />
+            <input
+              type="file"
+              name="thumbnail_image"
+              id="thumbnail_image"
+              (change)="onFileSelected($event)"
+            />
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="tags" class="col-form-label">tags</label>
+            <input type="text" class="form-control" id="tags" formControlName="tags" name="tags" />
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+            <label for="course_information" class="col-form-label">Course Short Information</label>
+            <textarea class="form-control" id="course_information" formControlName="course_information"></textarea>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+            <label for="course_brief_info" class="col-form-label">Course Details Description</label>
+            <textarea type="text" class="form-control" id="course_brief_info"
+              formControlName="course_brief_info" name="course_brief_info"></textarea>
+          </div>
+
+
+          <div class="text-center my-3">
+            <button routerLink="/dashboard/mycourse" type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Update Course</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.submitbtn{
+    background-color: var(--TextColor);
+    color: var(--WhiteColor);
+}
+
+.nextbtn{
+    background-color: var(--btndarkColor);
+    color: var(--WhiteColor);
+}

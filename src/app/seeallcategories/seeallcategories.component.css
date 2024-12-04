@@ -1,0 +1,38 @@
+.card-user{
+  border: 1px solid black ;
+  padding: 5px 5px 0 5px;
+  border-radius: 5px;
+}
+
+.round{
+    border-radius: 10px !important;
+}
+
+.tr-img{
+  /* border: 1px solid black ; */
+  height: 24px;
+  object-fit: cover;
+  /* width: 18px; */
+  /* border-radius: 50%; */
+}
+
+.trainer-name-container {
+  position: relative;
+  display: inline-block;
+}
+
+.full-name {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  font-size: small;
+  padding: 5px;
+  z-index: 1;
+}
+
+.trainer-name-container:hover .full-name {
+  display: block;
+}
+
+  

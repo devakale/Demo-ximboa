@@ -1,0 +1,59 @@
+ <div class="container-fluid">
+  <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 gx-4 gy-2   mt-1">
+    <div  *ngFor="let allcourses of filteredCourses  | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems }"
+      class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
+      
+        <img *ngIf="allcourses.thumbnail_image; else dummyImage" [src]="allcourses.thumbnail_image"
+          class="card-img-top img-fluid" alt="Course Image">
+        <ng-template #dummyImage>
+          <img src="../../assets/courses dummy.jpg" alt="Course Image" class="card-img-top img-fluid">
+        </ng-template>
+        <div class="card-body mb-0 pb-0">
+          <div class="d-flex align-items-center trainer-name-container justify-content-between">
+            <h5 class="card-title  text-capitalize" 
+                  (mouseenter)="showcourseName = true" 
+                  (mouseleave)="showcourseName = false">
+                  {{ truncatecourseName(allcourses.course_name) }}
+          </h5>
+               <h5 *ngIf="showcourseName" class="card-title full-name rounded" style="font-size: 14px; margin-top: 70px;" >{{allcourses.course_name}}</h5>
+            <span class="text-center">
+              <span class="poppins-semibold-italic"> {{allcourses.online_offline}} </span>
+              <i *ngIf="allcourses.online_offline === 'Online'" class="fas fa-circle-play text-muted m-0 p-0"></i>
+              <i *ngIf="allcourses.online_offline === 'Offline'" class="fas fa-location-dot m-0 p-0"></i>
+            </span>
+          </div>
+          <span class="">{{allcourses.category_name}}</span>
+          <div class="d-flex align-items-center justify-content-between mt-1 mb-0 m-0 p-0">
+            <div class="d-flex align-items-center gap-2  trainer-name-container">
+              <p><img src="{{allcourses.trainer_image}}" class="rounded-circle" height="20px" width="20px" alt=""></p>
+              <p class="card-title  text-capitalize pb-1" 
+              (mouseenter)="showbusinessName = true" 
+              (mouseleave)="showbusinessName = false">
+              {{ trunbusinessName(allcourses.business_Name) }}
+           </p>
+              <p *ngIf="showbusinessName" class=" full-name rounded" style="font-size: 13px; margin-top: 79px;" >{{allcourses.business_Name }}</p>
+            </div>
+            <p>{{allcourses.course_rating }} <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i></p>
+          </div>
+          <button class="left-side-top rounded px-2">{{allcourses.course_flag}}</button>
+        </div>
+        <div class="card-footer d-flex align-items-center justify-content-between pb-0 mt-0">
+          <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration}} Weeks</p>
+          <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{
+            getFormattedPrice(allcourses.course_price) }}</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  
+  <pagination-controls (pageChange)="onPageChange($event)" class="text-end"
+    style="font-size: small;"></pagination-controls>
+    
+</div>
+
+
+
+

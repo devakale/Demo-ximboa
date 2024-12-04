@@ -1,0 +1,50 @@
+/* Target the wrapper to remove any overflow */
+::ng-deep .mat-tab-body {
+    overflow: hidden !important;
+    height: 100%;
+  }
+  
+  /* Ensure that tab content does not cause a scrollbar */
+  ::ng-deep .mat-tab-body {
+    height: 100%;
+  }
+  
+  /* Target the content inside each tab to prevent overflow */
+  ::ng-deep .mat-tab-body {
+    height: auto !important;
+    overflow: visible !important;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Optional: Ensure that parent containers are also adjusted */
+  .mat-tab-group {
+    height: auto !important;
+  }
+  
+
+  .trainer-name-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .full-name {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-size: small;
+    padding: 5px;
+    z-index: 1;
+  }
+  
+  .trainer-name-container:hover .full-name {
+    display: block;
+  }
+  
+  .coursename{
+    color: var(--TextColor);
+  }
+  .coursename:hover{
+    text-decoration: underline;
+  }

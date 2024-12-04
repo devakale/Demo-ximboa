@@ -1,0 +1,312 @@
+<div class="container-fluid p-2" style="background-color: #F5F5F5;">
+<div *ngIf="ShowEvent" class="container" >
+  <div class="row gap-5">
+    <div class="col-sm-12 col-md-5 col-lg-8">
+      <div >
+        <img *ngIf="ShowEvent.event_thumbnail; else dummyImage" src="{{ShowEvent?.event_thumbnail}}" class="ThumbnailImage rounded img-fluid" alt="Event Thumbnail">
+      <ng-template #dummyImage>
+        <img src="../../assets/event dummy.jpg" alt="Dummy Image" class="ThumbnailImage img-fluid rounded">
+      </ng-template>
+      </div>
+      <div class="d-flex align-items-center justify-content-between px-2">
+        <div class="d-flex gap-2 pt-2">
+          <p class="card-title poppins-semibold" style="font-size: 25px;">{{ShowEvent?.event_name}}</p>
+         <p class="mt-3" style="font-size: small;">(Provided by {{ShowEvent?.business_Name}})</p>
+        </div>
+        <!-- share button scetion -->
+        <div>
+          <!-- <i  class="fas fa-share-alt  text-primary"></i>  -->
+          <i (click)="shareicon()" class="fa-solid fa-share text-primary fs-3"></i>
+          <div class="share-container">
+              <div *ngIf="showshare" class="share-options gap-4 p-2">
+                  <a (click)="shareOnFacebook()" class="share-option p-1">
+                      <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
+                  </a>
+                  <a (click)="shareOnWhatsApp()" class="share-option p-1">
+                      <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
+                  </a>
+                  <a (click)="copyLink()" class="share-option p-1">
+                      <i class="fas fa-link fs-3"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+     </div>
+      <p class="poppins-regular" style="text-align: justify;">{{ShowEvent.event_info}}</p>
+    </div>
+    <div class="col-sm-12 col-md-5 col-lg-3">
+      <div class="card trainercard ">
+        <div class="text-center mt-3">
+          <img src="{{ShowEvent.trainer_image}}" class="object-fit-cover rounded-circle" alt="..."
+            style="width: 170px !important;height: 170px;">
+        </div>
+        <button routerLink="/coursedetails/{{ShowEvent.trainer_id}}" class="btn btn-sm rounded viewtrainerbtn">View Profile</button>
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold"> {{ShowEvent?.business_Name}}</h5>
+          <div class="social-icons">
+            <i href="https://www.facebook.com" class="fa-brands fa-facebook border rounded"></i>
+            <i href="https://twitter.com" target="_blank" class="fab fa-twitter border rounded"></i>
+            <i href="https://www.instagram.com" target="_blank" class="fab fa-instagram border rounded"></i>
+            <i href="https://www.linkedin.com" target="_blank" class="fab fa-linkedin-in border rounded"></i>
+            <i href="https://www.youtube.com" target="_blank" class="fab fa-youtube border rounded"></i>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <p><i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i> 4.5</p>
+          <b>{{ShowEvent.total_course}} courses</b>
+        </div>
+      </div>
+      <div class="mt-5">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <small>Tickets Price</small>
+          <small>Free</small>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <small><i class="fa-solid fa-calendar"></i> Date </small>
+          <small>{{ShowEvent.event_date | date}} </small>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <small><i class="fa-solid fa-clock"></i> Schedule </small>
+          <small>{{ShowEvent.event_start_time}} To {{ShowEvent.event_end_time}}  </small>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <small><i class="fa-solid fa-clock"></i> Event Mode </small>
+          <small>{{ShowEvent.event_type}} </small>
+        </div>
+        <div *ngIf="ShowEvent?.event_location"  class="d-flex align-items-center justify-content-between mb-3">
+          <small><i class="fa-solid fa-location-dot"></i> Location </small>
+          <small> {{ShowEvent.event_location}} </small>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <small><i class="fa-solid fa-layer-group"></i> Category </small>
+          <small>{{ShowEvent.event_category}} </small>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <small><i class="fa-solid fa-globe"></i> Language </small>
+          <small> {{ShowEvent.event_languages}}  </small>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <small><i class="fa-regular fa-flag"></i> Estimated Seat </small>
+          <small> {{ShowEvent.estimated_seats}} </small>
+        </div>
+        <div class="text-center mt-3">
+          <button (click)="BookEvent(ShowEvent._id)" class="btn btn-primary rounded-pill px-5">Join Event</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <mat-tab-group dynamicHeight mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms">
+      <mat-tab label="Description" >
+        <div class="p-3">
+        <p style="text-align: justify;">{{ShowEvent?.event_description}}</p>
+      </div>
+        </mat-tab>
+      <mat-tab label="Review" >
+        <section class="p-3">
+        <div class="row " *ngFor="let review of ShowEventReview | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems }">
+          <div class="col-1 text-end">
+            <img src="{{review.trainer_image}}" class="object-fit-cover rounded-circle" height="60px" width="60px" alt="">
+          </div>
+          <div class="col-10">
+            <h6>{{review.user_name}}</h6>
+            <div>
+              <span *ngFor="let star of starsArray; let i = index"
+              [ngClass]="{'fa fa-star checked': i < review.star_count, 'fa fa-star': i <= review.star_count }">
+             </span>
+           </div>
+           <p>{{review.review}}</p>
+          </div>
+        </div>
+        
+        <pagination-controls (pageChange)="onPageChange($event)" class="text-end" style="font-size: small;"></pagination-controls>
+        <!-- Write Review -->
+        <div class="mt-3" >
+          <h5 class="text-color">Write Review</h5>
+          <div class="row">
+              <form (ngSubmit)="postreviewEvent()" #reviewForm="ngForm">
+  
+                  <div class="d-flex align-items-center gap-2 star-rating">
+                      <span *ngFor="let i of stars; let index = index" class="fa fa-star"
+                          [ngClass]="{'checked': index < rating}" (click)="toggleRating(index + 1)"
+                          style="cursor: pointer;"></span>
+                      <span class="border px-2">{{ rating }}</span>
+                  </div>
+                  <div class="my-3">
+                      <textarea class="form-control" placeholder="Message" [(ngModel)]="review.review"
+                          name="review" id="review"></textarea>
+                  </div>
+                  <div>
+                      <button type="submit" class="btn btnq" [disabled]="!reviewForm.valid">Submit you'r Review</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+        </section>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+ 
+</div>
+
+<div class="container mt-3">
+  <h5 class="fw-bold" style="color: var(--TextColor);">Related Events</h5>
+  <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+   <div *ngFor="let Event of relatedEvent" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+     <div class="card" routerLink="/eventdetails/{{Event._id}}">
+       <img src="{{Event.event_thumbnail}}" class="card-img-top img-fluid" alt="...">
+       <span class="onproducthoverflag rounded px-3">{{Event.event_flag}}</span>
+       <div class="card-body text">
+         <div class="d-flex align-items-center justify-content-between gap-1 trainer-name-container">
+           <span>
+             <label class="poppins-semibold-italic text-muted" style="font-size: 12px;">{{Event.event_date |  date: 'MMM'}}</label><br>
+             <span class="poppins-semibold-italic" style="font-size: 24px;">{{Event.event_date |  date: 'dd'}}</span>
+           </span>
+           <span class="text-center">
+            <p class="card-title poppins-semibold-italic text-center  text-capitalize"
+            (mouseenter)="showeventName = true" (mouseleave)="showeventName = false">
+            {{ truneventName(Event.event_name) }}
+          </p>
+          <p *ngIf="showeventName" class="card-title full-name rounded" style="font-size: 14px; ">
+            {{Event.event_name}}</p>
+           </span>
+           <span class="text-center">
+             <span class="poppins-semibold-italic"> {{Event.event_type}} </span> <br>
+             <i *ngIf="Event.event_type === 'Online'" class="fas fa-circle-play text-muted"></i>
+             <i *ngIf="Event.event_type === 'Offline'" class="fas fa-location-dot"></i>
+           </span>
+       </div>
+         <div class="d-flex align-items-center gap-2 justify-content-center">
+           <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+           <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+           <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+           <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px" width="30px" alt="">
+           <label class="p-2 border rounded-circle"> +35</label>
+         </div>
+         <div class="d-flex align-items-center justify-content-between mt-2">
+           <button class="btn rounded-pill  text-light poppins-regular" style="font-size: 14px;background-color: var(--TextColor);">Book Seat</button>
+           <button class="btn rounded-pill  text-light poppins-regular" style="font-size: 14px;background-color: var(--btndarkColor);">View More</button>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+
+
+</div>
+
+<!-- Model For User Registration -->
+
+<div class="modal fade" id="CheckLoggedIN" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="text-end">
+        <button type="button" class="btn-close me-3 mt-3" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body px-5">
+        <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+          <div class="row desktop">
+            <div class="row">
+              <div class="col-sm-12 mb-3">
+                <h4><b>Register</b></h4>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="f_Name" class="form-label">First Name <sup>*</sup></label>
+                <input type="text" class="form-control form-control-lg rounded-input" placeholder="" id="f_Name"
+                  [(ngModel)]="userData.f_Name" name="f_Name" required #FirstName="ngModel">
+                <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="text-danger">
+                  First Name is required.
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="l_Name" class="form-label">Last Name <sup>*</sup></label>
+                <input type="text" class="form-control form-control-lg rounded-input" placeholder="" id="l_Name"
+                  [(ngModel)]="userData.l_Name" name="l_Name" required #LastName="ngModel">
+                <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)" class="text-danger">
+                  Last Name is required.
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="middle_Name" class="form-label">Middle Name</label>
+                <input type="text" class="form-control form-control-lg rounded-input" placeholder="" id="middle_Name"
+                  [(ngModel)]="userData.middle_Name" name="middle_Name" #MiddleName="ngModel">
+              </div>
+
+
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="email_id" class="form-label">Your Email <sup>*</sup></label>
+                <input type="email" class="form-control form-control-lg rounded-input" placeholder="" id="email_id"
+                  [(ngModel)]="userData.email_id" name="email_id" required email #email="ngModel">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                  <div *ngIf="email.errors?.['required']">Email is required.</div>
+                  <div *ngIf="email.errors?.['email']">Please enter a valid email address.</div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="mobile_number" class="form-label">Mobile Number <sup>*</sup></label>
+                <input type="number" pattern="^[0-9]{10}$" class="form-control form-control-lg rounded-input"
+                  minlength="10" maxlength="10" pattern="^\d{10}$" id="mobile_number"
+                  [(ngModel)]="userData.mobile_number" name="mobile_number" required #mobile="ngModel">
+                <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="text-danger">
+                  <div *ngIf="mobile.errors?.['required']">Mobile Number is required.</div>
+                  <div *ngIf="mobile.errors?.['pattern']">Mobile Number must be exactly 10 digits.</div>
+                </div>
+
+              </div>
+
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="password" class="form-label">Password <sup>*</sup></label>
+                <div class="d-flex align-items-center inputbtn">
+                  <input [type]="show ? 'text' : 'password'" class="form-control form-control-lg rounded-input h-25"
+                    id="password" minlength="8" [(ngModel)]="userData.password" name="password" required
+                    #password="ngModel" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+                  <button type="button" (click)="togglePassword()">
+                    <i class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+                    <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+                  </button>
+                </div>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                  <div *ngIf="password.errors?.['required']">Password is required.</div>
+                  <div *ngIf="password.errors?.['pattern']">
+                    Password must be at least 8 characters long, include at least one uppercase letter, one lowercase
+                    letter, one number, and one special character.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <div class="form-check pt-3">
+                  <input class="form-check-input border-dark" type="checkbox" [(ngModel)]="rememberMe" name="rememberMe"
+                    id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">I accept the</label> &nbsp;
+                  <label style="color: #6149CD;">Terms and Conditions</label>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <div class="form-check pt-3">
+                  <label data-bs-dismiss="modal" aria-label="Close" class="form-check-label"
+                    for="flexCheckDefault">Already Have an Account ? <a routerLink="/signin"> Login </a></label>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="pt-5 mb-3 text-center">
+              <button type="submit" class="btn btn-primary rounded-pill px-5" [disabled]="!signUpForm.form.valid">Sign up</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

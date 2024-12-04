@@ -1,0 +1,25 @@
+.star-rating{
+    .fa-star {
+    font-size: 18px; 
+    }
+  
+  .checked {
+    color: gold;  
+  }
+  
+  }
+  
+  .fa-star {
+    color: lightgray; /* Default star color */
+  }
+  
+  .checked {
+    color: gold; /* Color for filled stars */
+  }
+
+  .img-resize{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 10px;
+  }

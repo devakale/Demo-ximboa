@@ -1,0 +1,134 @@
+<div class="container-fluid" style="background-color: #F3F3F3;">
+    <div class="trainer_home mb-2">
+        <img class="img-fluid rounded" src="../../../assets/trainer_home_banner.png" alt>
+    </div>
+
+   
+
+
+
+
+    <div class="row my-4 pb-3">
+        <!-- Button Group: Flexbox for alignment and spacing -->
+        <div *ngIf="isTrainer || isSELF_EXPERT || isInstitute" class="d-flex flex-wrap  my-3">
+            <button routerLink="/dashboard/mycourse" class="btn border btn-sm mb-3 px-3 me-3 " style="border-radius: 20px; background-color: #007bff; color: white;">
+                <i class="fa-solid fa-plus px-1"></i>Add Course
+            </button>
+            <button routerLink="/dashboard/product" class="btn mb-3 btn-sm border  px-3 me-3" style="border-radius: 20px; background-color: #007bff; color: white;">
+                <i class="fa-solid fa-plus px-1"></i>Add Product
+            </button>
+            <button routerLink="/dashboard/event" class="btn mb-3 btn-sm border  px-3 me-3" style="border-radius: 20px; background-color: #007bff; color: white;">
+                <i class="fa-solid fa-plus px-1"></i>Add Event
+            </button>
+        </div>
+
+    </div>
+
+    <div class="row">    
+        <!-- Chart Sections: Use responsive grid system for proper alignment on all devices -->
+        <div class="col-12 col-md-6 col-lg-7">
+            <div id="donutChart" class="text-center ms-5">
+                <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                    [labels]="chartOptions.labels" [responsive]="chartOptions.responsive"></apx-chart>
+            </div>
+        </div>
+    
+        <div class="col-12 col-md-6 col-lg-5">
+            <div id="areaChart" class="text-center">
+                <apx-chart [series]="areaChartOptions.series" [chart]="areaChartOptions.chart"
+                    [xaxis]="areaChartOptions.xaxis" [stroke]="areaChartOptions.stroke"
+                    [tooltip]="areaChartOptions.tooltip" [dataLabels]="areaChartOptions.dataLabels"></apx-chart>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div *ngIf="showDashboardata" class="row mt-5">
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card card-style">
+                <div class="d-flex gap-3 align-items-center">
+                    <div class="icon border p-1 px-2 " style="background-color: #C0D7FF;border-radius: 20px;">
+                        <i class="fas fa-file-alt text-muted    "></i>
+                    </div>
+                    <div>
+                        <p class="mb-0 text-muted">Total Course</p>
+                        <h3 class="fw-bold">
+                            {{showDashboardata.totalCourses < 10 ? "0" + showDashboardata.totalCourses :
+                                showDashboardata.totalCourses }} </h3>
+                    </div>
+
+                </div>
+                <hr>
+                <a href="#" routerLink="/dashboard/mycourse" class="see-details d-flex justify-content-between align-items-center">
+                    See Details <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card card-style">
+                <div class="d-flex gap-3 align-items-center">
+                    <div class="icon px-2 p-1 text-muted" style="background-color: #C0D7FF;border-radius: 20px;">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div>
+                        <p class="mb-0 text-muted">Total Events</p>
+                        <h3 class="fw-bold">
+                            {{showDashboardata.totalEvents <10 ? "0" + showDashboardata.totalEvents:
+                                showDashboardata.totalEvents }} </h3>
+                    </div>
+                </div>
+                <hr>
+                <a href="#" routerLink="/dashboard/event" class="see-details d-flex justify-content-between align-items-center">
+                    See Details <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card card-style">
+                <div class="d-flex gap-3 align-items-center">
+
+                    <div class="icon p-1 px-2 text-muted" style="background-color: #C0D7FF;border-radius: 20px;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div>
+                        <p class="mb-0 text-muted">Total Products</p>
+                        <h3 class="fw-bold">
+                            {{showDashboardata.totalProducts <10 ? "0" + showDashboardata.totalProducts:
+                                showDashboardata.totalProducts }}</h3>
+                    </div>
+
+                </div>
+                <hr>
+                <a href="#"  routerLink="/dashboard/product"  class="see-details d-flex justify-content-between align-items-center">
+                    See Details <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card card-style card-certificates">
+                <div class="d-flex gap-3 align-items-center">
+                    <div class="icon px-3 ">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <p class="mb-0  text-light">Certificates</p>
+                        <h3 class="fw-bold">56</h3>
+                    </div>
+
+                </div>
+                <hr>
+                <a href="#" class="text-light  d-flex justify-content-between align-items-center"
+                    style="text-decoration: none;">
+                    See Details <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</div>

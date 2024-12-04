@@ -1,0 +1,11 @@
+.filterlist{
+    display: flex;
+    gap: 15px;
+    li{
+        list-style: none;
+    }
+}
+
+
+
+

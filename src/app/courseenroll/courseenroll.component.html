@@ -1,0 +1,299 @@
+<div class="container rounded my-3" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+  <div *ngIf="Showcoursedetails" class="row pt-4">
+    <div class="col-sm-12 col-md-12 col-lg-5 ">
+      <div>
+        <img *ngIf="Showcoursedetails.thumbnail_image; else dummyImage" src="{{Showcoursedetails.thumbnail_image}}"
+          class="ThumbnailImage img-fluid rounded" alt="..." style="border-radius: 6px;"><br>
+        <ng-template #dummyImage>
+          <img src="../../assets/courses dummy.jpg" alt="Dummy Image" class="ThumbnailImage rounded img-fluid">
+        </ng-template>
+      </div>
+      <div class="d-flex align-items-center justify-content-between px-1">
+        <p class="text-end mt-2">
+          <span class="poppins-semibold-italic"> {{Showcoursedetails.online_offline}} </span>
+          <i *ngIf="Showcoursedetails.online_offline === 'Online'" class="fas fa-circle-play text-muted m-0 p-0"></i>
+          <i *ngIf="Showcoursedetails.online_offline === 'Offline'" class="fas fa-location-dot m-0 p-0"></i>
+        </p>
+        <div class="m-0 p-0 g-0" style="margin-top: -13px !important;">
+          Rating
+          <span *ngFor="let star of starsArray; let i = index"
+            [ngClass]="{'fa fa-star checked': i < Showcoursedetails.course_rating, 'fa fa-star': i <= Showcoursedetails.course_rating }">
+          </span>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-7  px-5 label-color">
+      <div class="d-flex align-items-center gap-2">
+        <p class="mb-3 poppins-semibold" style="font-size: 25px;">{{Showcoursedetails.course_name}}</p>
+        <p class="mt-2" style="font-size: small;">(Provided By {{Showcoursedetails.business_Name}})</p>
+      </div>
+      <p class="poppins-regular" style="text-align: justify;">{{Showcoursedetails.course_information}}</p>
+      <div class="row text-center me-3">
+        <div class="col-6 col-md-3 border p-2 fw-bold">Price</div>
+        <div class="col-6 col-md-3 border p-2 text-decoration-line-through"> {{Showcoursedetails.course_price}}</div>
+        <div class="col-6 col-md-3 border p-2 fw-bold">Selling Price</div>
+        <div class="col-6 col-md-3 border p-2"> {{Showcoursedetails.course_offer_prize}}</div>
+
+        <div class="col-6 col-md-3 border p-2 fw-bold">Start Date</div>
+        <div class="col-6 col-md-3 border p-2">{{Showcoursedetails.start_date | date}}</div>
+        <div class="col-6 col-md-3 border p-2 fw-bold">End Date</div>
+        <div class="col-6 col-md-3 border p-2">{{Showcoursedetails.end_date | date}}</div>
+
+        <div class="col-6 col-md-3 border p-2 fw-bold">Start Time</div>
+        <div class="col-6 col-md-3 border p-2">{{Showcoursedetails.start_time}}</div>
+        <div class="col-6 col-md-3 border p-2 fw-bold">End Time</div>
+        <div class="col-6 col-md-3 border p-2">{{Showcoursedetails.end_time}}</div>
+      </div>
+      <div class="mt-3 pb" style="cursor: pointer;">
+        <label class="me-1">Tags: </label>
+        <label *ngFor="let tag of Showcoursedetails.tags" class="border rounded py-1 px-2 me-2 mb-2"> {{tag }}</label>
+      </div>
+      <div>
+        <button (click)="CourseEnroll(Showcoursedetails._id)" class="btn text-white   px-2 me-3 mb-2"
+          style="background-color: #307DFF;">Enroll Now</button>
+        <button routerLink="/coursedetails/{{Showcoursedetails?.trainer_id}}" class="btn text-white px-2 me-3 mb-2"
+          style="background-color: #265BBD;">View Trainer Profile</button>
+
+        <!-- share button scetion -->
+        <span>
+          <button (click)="shareicon()" class="btn text-white   px-2 mb-2" style="background-color: #307DFF;"><i
+              class="fas fa-share-alt fs-5"></i> Share</button>
+          <div class="share-container">
+            <div *ngIf="showshare" class="share-options  p-3 shadow bg-body-tertiary rounded">
+              <a (click)="shareOnFacebook()" class="share-option ">
+                <i class="fab fa-facebook fs-4" style="color: #0976e4;"></i>
+                Facebook
+              </a>
+              <a (click)="shareOnWhatsApp()" class="share-option ">
+                <i class="fab fa-whatsapp fs-4" style="color: #30d14e; text-decoration: none;"></i>
+                Whatsapp
+              </a>
+              <a (click)="copyLink()" class="share-option ">
+                <i class="fas fa-link fs-5"></i>
+                Copy Link
+              </a>
+            </div>
+          </div>
+        </span>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <mat-tab-group dynamicHeight mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms">
+      <mat-tab label="Description">
+        <div class="p-3">
+          <p style="text-align: justify;">{{Showcoursedetails?.course_brief_info}}</p>
+        </div>
+      </mat-tab>
+      <mat-tab label="Review">
+        <section class="p-3">
+          <div class="row "
+            *ngFor="let review of ShowCourseReview | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems }">
+            <div class="col-1 text-end">
+              <img src="{{review.trainer_image}}" class="object-fit-cover rounded-circle" height="60px" width="60px"
+                alt="">
+            </div>
+            <div class="col-10">
+              <h6>{{review.user_name}}</h6>
+              <div>
+                <span *ngFor="let star of starsArray; let i = index"
+                  [ngClass]="{'fa fa-star checked': i < review.star_count, 'fa fa-star': i <= review.star_count }">
+                </span>
+              </div>
+              <p>{{review.review}}</p>
+            </div>
+          </div>
+          <pagination-controls (pageChange)="onPageChange($event)" class="text-end"
+            style="font-size: small;"></pagination-controls>
+          <!-- Write Review -->
+          <div class="mt-3">
+            <h5 class="text-color">Write Review</h5>
+            <div class="row">
+              <form (ngSubmit)="postreviewCourse()" #reviewForm="ngForm">
+
+                <div class="d-flex align-items-center gap-2 star-rating">
+                  <span *ngFor="let i of stars; let index = index" class="fa fa-star"
+                    [ngClass]="{'checked': index < rating}" (click)="toggleRating(index + 1)"
+                    style="cursor: pointer;"></span>
+                  <span class="border px-2">{{ rating }}</span>
+                </div>
+                <div class="my-3">
+                  <textarea class="form-control" placeholder="Message" [(ngModel)]="review.review" name="review"
+                    id="review"></textarea>
+                </div>
+                <div>
+                  <button type="submit" class="btn btnq" [disabled]="!reviewForm.valid">Submit you'r Review</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="p-3">
+    <h5 class="fw-bold" style="color: var(--TextColor);">Related Product</h5>
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 ">
+      <div *ngFor="let allcourses of RelatedCourses" class="col-sm-12 col-md-6 col-lg-3 mb-3">
+        <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
+          <img src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid" alt="...">
+          <div class="card-body mb-0 pb-0">
+            <div class="d-flex align-items-center trainer-name-container justify-content-between">
+              <h5 class="card-title  text-capitalize"
+               (mouseenter)="showcourseName = true"
+                (mouseleave)="showcourseName = false">
+                {{ truncatecourseName(allcourses.course_name) }}
+              </h5>
+              <h5 *ngIf="showcourseName" class="card-title full-name rounded"
+                style="font-size: 14px; margin-top: 70px;">{{allcourses.course_name}}</h5>
+              <span class="text-center">
+                <span class="poppins-semibold-italic"> {{allcourses.online_offline}} </span>
+                <i *ngIf="allcourses.online_offline === 'Online'" class="fas fa-circle-play text-muted m-0 p-0"></i>
+                <i *ngIf="allcourses.online_offline === 'Offline'" class="fas fa-location-dot m-0 p-0"></i>
+              </span>
+            </div>
+            <span class="">{{allcourses.category_name}}</span>
+
+            <div class="d-flex align-items-center justify-content-between mt-1 mb-0 m-0 p-0">
+              <div class="d-flex align-items-center gap-2  trainer-name-container">
+                <p><img src="{{allcourses.trainer_image}}" class="rounded-circle" height="20px" width="20px" alt=""></p>
+                <p class="card-title  text-capitalize" (mouseenter)="showbusinessName = true"
+                  (mouseleave)="showbusinessName = false">
+                  {{ trunbusinessName(allcourses.business_Name) }}
+                </p>
+                <p *ngIf="showbusinessName" class=" full-name rounded" style="font-size: 13px; margin-top: 79px;">
+                  {{allcourses.business_Name }}</p>
+              </div>
+              <p>{{allcourses.course_rating || 4.5}} <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i></p>
+            </div>
+
+            <button class="left-side-top rounded px-3">{{allcourses.course_flag}}</button>
+
+          </div>
+          <div class="card-footer d-flex align-items-center justify-content-between">
+            <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration || 2}} Weeks</p>
+            <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{
+              getFormattedPrice(allcourses.course_price) }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Model For User Registration -->
+
+  <div class="modal fade" id="CheckLoggedIN" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="text-end">
+          <button type="button" class="btn-close mt-4 me-4" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body px-5">
+          <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+            <div class="row desktop">
+              <div class="row">
+                <div class="col-sm-12 mb-3">
+                  <h4><b>Register</b></h4>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="f_Name" class="form-label">First Name <sup>*</sup></label>
+                  <input type="text" class="form-control form-control-lg rounded-input" placeholder="" id="f_Name"
+                    [(ngModel)]="userData.f_Name" name="f_Name" required #FirstName="ngModel">
+                  <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="text-danger">
+                    First Name is required.
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="l_Name" class="form-label">Last Name <sup>*</sup></label>
+                  <input type="text" class="form-control form-control-lg rounded-input" placeholder="" id="l_Name"
+                    [(ngModel)]="userData.l_Name" name="l_Name" required #LastName="ngModel">
+                  <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)" class="text-danger">
+                    Last Name is required.
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="middle_Name" class="form-label">Middle Name</label>
+                  <input type="text" class="form-control form-control-lg rounded-input" placeholder="" id="middle_Name"
+                    [(ngModel)]="userData.middle_Name" name="middle_Name" #MiddleName="ngModel">
+                </div>
+
+
+
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="email_id" class="form-label">Your Email <sup>*</sup></label>
+                  <input type="email" class="form-control form-control-lg rounded-input" placeholder="" id="email_id"
+                    [(ngModel)]="userData.email_id" name="email_id" required email #email="ngModel">
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                    <div *ngIf="email.errors?.['required']">Email is required.</div>
+                    <div *ngIf="email.errors?.['email']">Please enter a valid email address.</div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="mobile_number" class="form-label">Mobile Number <sup>*</sup></label>
+                  <input type="number" pattern="^[0-9]{10}$" class="form-control form-control-lg rounded-input"
+                    minlength="10" maxlength="10" pattern="^\d{10}$" id="mobile_number"
+                    [(ngModel)]="userData.mobile_number" name="mobile_number" required #mobile="ngModel">
+                  <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="text-danger">
+                    <div *ngIf="mobile.errors?.['required']">Mobile Number is required.</div>
+                    <div *ngIf="mobile.errors?.['pattern']">Mobile Number must be exactly 10 digits.</div>
+                  </div>
+
+                </div>
+
+
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="password" class="form-label">Password <sup>*</sup></label>
+                  <div class="d-flex align-items-center inputbtn">
+                    <input [type]="show ? 'text' : 'password'" class="form-control form-control-lg rounded-input h-25"
+                      id="password" minlength="8" [(ngModel)]="userData.password" name="password" required
+                      #password="ngModel"
+                      pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+                    <button type="button" (click)="togglePassword()">
+                      <i class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+                      <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+                    </button>
+                  </div>
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                    <div *ngIf="password.errors?.['required']">Password is required.</div>
+                    <div *ngIf="password.errors?.['pattern']">
+                      Password must be at least 8 characters long, include at least one uppercase letter, one lowercase
+                      letter, one number, and one special character.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <div class="form-check pt-3">
+                    <input class="form-check-input border-dark" type="checkbox" [(ngModel)]="rememberMe"
+                      name="rememberMe" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">I accept the</label> &nbsp;
+                    <label style="color: #6149CD;">Terms and Conditions</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <div class="form-check pt-3">
+                    <label data-bs-dismiss="modal" aria-label="Close" class="form-check-label"
+                      for="flexCheckDefault">Already Have an Account ? <a routerLink="/signin"> Login </a></label>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="pt-5 mb-3 text-center">
+                <button type="submit" class="btn btn-primary rounded-pill px-5" [disabled]="!signUpForm.form.valid">Sign up</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

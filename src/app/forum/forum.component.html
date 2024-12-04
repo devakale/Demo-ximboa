@@ -1,0 +1,57 @@
+<img src="../../assets/Innner banner.jpg" alt="" class="object-fit-cover img-fluid">
+<div class="container-fluid" style="background-color: var(--bodyColor);">
+  <div class="row"></div>
+  <div class="container mt-3">
+    <div class="row justify-content-between">
+      <div class="col-sm-12 col-md-6 col-lg-9 mb-3 rounded" style="background-color: var(--WhiteColor);">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-md-between m-2">
+          <div class="text-center text-md-start mb-3 mb-md-0">
+            <h5 class="mb-0">All Questions</h5>
+            <p>{{ShowForumdata.length}} Questions</p>
+          </div>
+          <div class="text-center ">
+            <ul class="filterlist  p-0 m-0 table-responsive pb-3 ">
+              <li class="btn btn-sm btn-outline-primary">Newest</li>
+              <li class="btn btn-sm btn-outline-primary">Active</li>
+              <li class="btn btn-sm btn-outline-primary">Answered</li>
+              <li class="btn btn-sm btn-outline-primary">Unanswered</li>
+            </ul>
+          </div>
+        </div>
+        
+        <hr>
+
+        <div *ngFor="let forum of ShowForumdata" class="m-2">
+          <div class="d-flex gap-2 mb-3">
+            <img [src]="forum.trainer_image" class="rounded-circle" height="30px" width="30px" alt="">
+            <div>
+              <h5 [routerLink]="'/forum-details/' + forum._id" class="mb-0" style="cursor: pointer;color: #265ABB;">
+                {{ forum.title }}
+              </h5>
+              <b style="color: var(--TextColor);">@{{ forum.creator_name }}</b>, 
+              <span class="text-muted">{{ forum.createdAt }}</span>
+              <div [innerHtml]="forum.sanitizedDescription"></div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-between ms-5">
+            <button [routerLink]="'/forum-details/' + forum._id" class="btn btn-primary rounded-pill px-3 py-1">
+              {{ forum.answer_count }} Answer
+            </button>
+            <div class="d-flex gap-4">
+              <span><i class="fa-solid fa-thumbs-up"></i> {{ forum.likes }}</span>
+              <span><i class="fa-solid fa-thumbs-down"></i> {{ forum.dislikes }}</span>
+              <span><i class="fa-solid fa-message"></i> {{ forum.comments }}</span>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-2 py-1 text-center  rounded" style="background-color: var(--WhiteColor);">
+        <h4 class="text-center">Tags</h4>
+      </div>
+    </div>
+  </div>
+  <button [routerLink]="'/Add-Forum'" class="btn btn-primary ask-question" style="position: fixed;bottom: 30px;right: 30px;">
+    Ask Question?
+  </button>
+</div>

@@ -1,0 +1,70 @@
+.card-style {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    transition: background-color 0.3s;
+    border: none;
+}
+
+.card-certificates {
+    background-color: #4158CE;
+    color: white;
+}
+
+.icon {
+    font-size: 1.8rem;
+}
+
+.card-style .icon {
+    color: #4158CE;
+}
+
+.card-certificates .icon {
+    color: white;
+}
+
+.see-details {
+    color: #4158CE;
+    text-decoration: none;
+}
+
+.card-certificates .see-details {
+    color: white;
+}
+
+.see-details i {
+    margin-left: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-style {
+        text-align: center;
+    }
+}
+
+
+#chart {
+    max-width: 380px;
+    /* margin: 15px auto; */
+    padding: 0;
+  }
+
+
+  .chart-container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  #donutChart{
+    margin-top: 50px;
+  }
+
+  #donutChart, #areaChart {
+    max-width: 380px;
+    padding: 0;
+    margin: auto;
+  }
+  
+  
+  

@@ -1,0 +1,289 @@
+.Trainer-img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
+}
+
+.fsize {
+  font-size: 60px;
+  font-weight: 800;
+}
+
+.fsizeblue {
+  font-size: 35px;
+  font-weight: bold;
+  color: var(--TextColor);
+  letter-spacing: 2px;
+
+}
+
+
+.categoryheading{
+  font-size: 25 ;
+  font-weight: bold;
+}
+
+.categorysubtitle {
+  font-size: 15px;
+}
+
+
+
+.workflowwords{
+  font-size: 18px;
+  margin-top: 5px !important;
+}
+
+.ViewmoreArrow{
+  cursor: pointer;
+  i{
+    color: var(--TextColor);
+  }
+}
+
+.box-hover {
+  background: linear-gradient(to left, #ffffff 50%, #307DFF 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  cursor: pointer;
+  transition: all ease .3s;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  &:hover {
+    background-position: left bottom;
+    color: white;
+  }
+}
+
+
+
+
+
+.trainercard {
+  position: relative; /* Uncommented to ensure relative positioning */
+}
+
+.trainercard:hover .viewtrainerbtn {
+  display: block; /* Shows the button on hover */
+}
+
+.viewtrainerbtn {
+  position: absolute;
+  top: 0;
+  left: 34%;
+  background-color: transparent; 
+  color: #f2f4f7; 
+  border: none; 
+  background-color: #307DFF;
+  display: none; /* Initially hidden */
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.productcard {
+  position: relative;
+}
+
+.productcard:hover .onproducthover {
+  display: block; /* Shows on hover */
+}
+
+.onproducthover {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  display: none; /* Initially hidden */
+}
+
+
+
+.img-class{
+  width: 180px !important;
+  height: 180px;
+  margin-top: -45%;
+   border: 1px solid #307DFF; 
+   padding: 2px
+}
+
+
+.line-container {
+  background-color: #2363bf; /* Matches the blue background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+}
+
+svg {
+  overflow: visible;
+}
+
+
+svg {
+  height: 50px;
+}
+
+.filled {
+  color: #FFAE06; /* Filled star color */
+}
+
+.unfilled {
+  color: #d3d3d3; /* Unfilled star color */
+}
+
+
+.TrainerFlag{
+  background-color: var(--TextColor);
+  color: var(--WhiteColor);
+  font-size: 10px !important;
+  /* padding: 5px 15px 5px 15px; */
+  /* border: none;
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  margin-top: 30px; */
+}
+
+.trainer-name-container {
+  position: relative;
+  display: inline-block;
+}
+
+.full-name {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  font-size: small;
+  padding: 5px;
+  z-index: 1;
+}
+
+.trainer-name-container:hover .full-name {
+  display: block;
+}
+
+
+/* Hide .workflowhide on mobile devices (less than 576px) */
+@media (max-width: 575.98px) {
+  .workflowhide {
+    display: none; /* Hide on mobile */
+  }
+  .downarrowhide {
+    display: block; /* Show on mobile */
+  }
+}
+
+/* Hide .workflowhide on mobile devices (less than 576px) */
+@media (max-width: 768px) {
+  .workflowhide {
+    display: none; /* Hide on mobile */
+  }
+  .downarrowhide {
+    display: block; /* Show on mobile */
+  }
+}
+
+/* Show .workflowhide on larger screens (576px and up) */
+@media (min-width: 768px) {
+  .workflowhide {
+    display: block; /* Show on larger screens */
+  }
+  .downarrowhide {
+    display: none; /* Hide on larger screens */
+  }
+}
+
+
+.carousel-item {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Responsive height and text adjustments */
+@media (max-width: 575.98px) {
+  .carousel-item {
+    height: 150px;
+    /* Reduce height on very small screens */
+    background-size: contain;
+    background-position: center top;
+   margin-top: 10px;
+  }
+  .subheading {
+    font-size: 13px;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .fsize {
+    font-size: 40px;
+    font-weight: 800}
+  
+  .fsizeblue {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--TextColor);
+    letter-spacing: 2px;
+  
+  }
+  
+
+  .heading {
+    font-size: 17px;
+    font-weight: 800;
+    font-style: normal;
+  }
+
+
+  .carousel-item .display-6 {
+    font-size: 17px;
+    /* Smaller heading for small screens */
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  .carousel-item p {
+    font-size: 10px;
+    /* Smaller subtext for small screens */
+    font-weight: 700;
+    font-style: normal;
+    margin: 10px 0 0px 0;
+
+  }
+}
+
+@media (min-width: 576px)  {
+  .carousel-item {
+    height: 520px;
+    /* Medium-small screen height */
+    background-size: cover;
+
+  }
+
+  .carousel-item .display-6 {
+    font-size: 50px;
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  .subheading {
+    font-size: 35px;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .heading {
+    font-size: 50px;
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  .carousel-item p {
+    font-size: 20px;
+    font-weight: 700;
+    font-style: normal;
+    margin: 85px 0 0px 0;
+  }
+}
+

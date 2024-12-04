@@ -1,0 +1,980 @@
+<div *ngIf="showprofile" class="container-fluid " style="background-color: #F5F5F5;">
+
+  <div class="row g-2 mb-0 pt-1 gallary-section">
+    <div class="col-sm-12 col-md-6 col-lg-10 ">
+      <div class="row g-2">
+        <div class="col-sm-12 col-md-6 col-lg-3 mb-2">
+          <img
+            [src]="showprofile?.gallarys?.[0]?.photos ? showprofile.gallarys[0].photos : 'assets/gallery-small-img.jpg'"
+            alt="Gallery Image" class="object-fit-cover img-fluid rounded  w-100 main-four-image" >
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-3 mb-2">
+          <img
+            [src]="showprofile?.gallarys?.[1]?.photos ? showprofile.gallarys[1].photos : 'assets/gallery-small-img.jpg'"
+            alt="Gallery Image" class="object-fit-cover img-fluid rounded  w-100 main-four-image" >
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3 mb-2">
+          <img
+            [src]="showprofile?.gallarys?.[2]?.photos ? showprofile.gallarys[2].photos : 'assets/gallery-small-img.jpg'"
+            alt="Gallery Image" class="object-fit-cover img-fluid rounded  w-100 main-four-image" >
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3 mb-2">
+          <img
+            [src]="showprofile?.gallarys?.[3]?.photos ? showprofile.gallarys[3].photos : 'assets/gallery-small-img.jpg'"
+            alt="Gallery Image" class="object-fit-cover img-fluid rounded  w-100 main-four-image" >
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-2">
+      <div class="row g-1">
+        <div class="col-sm-6 col-md-6 col-lg-6 galleryimg  mb-2 mb-lg-0">
+          <img
+            [src]="showprofile?.gallarys?.[4]?.photos ? showprofile.gallarys[4].photos : 'assets/gallery-small-img.jpg'"
+            class="rounded object-fit-cover img-fluid" alt="Gallery Image">
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 galleryimg  mb-2 mb-lg-0">
+          <img
+            [src]="showprofile?.gallarys?.[5]?.photos ? showprofile.gallarys[5].photos : 'assets/gallery-small-img.jpg'"
+            class="rounded object-fit-cover img-fluid" alt="Gallery Image">
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 galleryimg  position-relative mb-2" data-bs-toggle="modal"
+          data-bs-target="#gallery" style="cursor: pointer;">
+          <img
+            [src]="showprofile?.gallarys?.[6]?.photos ? showprofile.gallarys[6].photos : 'assets/gallery-small-img.jpg'"
+            class="rounded object-fit-cover opacity-25 img-fluid cursor-pointer" alt="Gallery Image" >
+          <span class="position-absolute top-50 start-50 translate-middle fw-bold text-dark p-2">View More</span>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 galleryimg ">
+          <img
+            [src]="showprofile?.gallarys?.[7]?.photos ? showprofile.gallarys[7].photos : 'assets/gallery-small-img.jpg'"
+            class="rounded object-fit-cover img-fluid" alt="Gallery Image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4 ">
+    <div class="table-responsive">
+      <div class="d-flex  justify-content-start">
+        <ul class="srolltabs pe-3">
+          <li *ngIf="showprofile?.skills[0]" class="btn btn-sm btn-outline-primary" href="#Skills"
+            (click)="scrollToSection($event, 'Skills')" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">Skills</li>
+
+          <li *ngIf="showprofile.About[0]?.about_us" class="btn btn-sm btn-outline-primary" href="#About"
+            (click)="scrollToSection($event, 'About')" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">About&nbsp;us</li>
+
+          <li *ngIf="showprofile.About[0]?.our_services" class="btn btn-sm btn-outline-primary" href="#Services"
+            (click)="scrollToSection($event, 'Services')" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">Services</li>
+
+          <li
+            *ngIf="showprofile.Educations[0]?.school && showprofile.Educations[0]?.college && showprofile.Educations[0]?.degree"
+            class="btn btn-sm btn-outline-primary" href="#Education" (click)="scrollToSection($event, 'Education')"
+            routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Education</li>
+
+          <li *ngIf="showprofile.Educations[0]?.achievements" class="btn btn-sm btn-outline-primary"
+            href="#Achievements" (click)="scrollToSection($event, 'Achievements')" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">Achievements/Certificates</li>
+
+          <li *ngIf="showprofile?.testimonials[0]" class="btn btn-sm btn-outline-primary" href="#Testimonials"
+            (click)="scrollToSection($event, 'Testimonials')" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">Testimonials</li>
+
+          <li *ngIf="AllCourses.length > 0" class="btn btn-sm btn-outline-primary" href="#Courses"
+            (click)="scrollToSection($event, 'Courses')" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">Courses</li>
+
+          <li *ngIf="AllEvents.length > 0" class="btn btn-sm btn-outline-primary" href="#Events"
+            (click)="scrollToSection($event, 'Events')" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">Events</li>
+
+          <li *ngIf="AllProducts.length > 0" class="btn btn-sm btn-outline-primary" href="#Products"
+            (click)="scrollToSection($event, 'Products')" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">Products</li>
+
+          <li *ngIf="showreviewdata.length > 0" class="btn btn-sm btn-outline-primary" href="#Reviews"
+            (click)="scrollToSection($event, 'Reviews')" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">Reviews</li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="m-0 p-0 g-0">
+  <div class="row   justify-content-around mt-1">
+    <!-- First Row code start hrer -->
+    <div class="col-sm-12 col-lg-4 ">
+      <div class="d-flex align-items-center gap-2 ">
+        <img *ngIf="showprofile.trainer?.role === 'SELF_EXPERT'" src="../../assets/SELF_EXPERT.png" class="rounded"
+          height="30px" width="30px" alt="" style="background-color:var(--TextColor);">
+        <img *ngIf="showprofile.trainer?.role === 'INSTITUTE'" src="../../assets/INSTITUTE.png" class="rounded"
+          height="30px" width="30px" alt="" style="background-color:var(--TextColor);">
+        <h5 class="text-color text-capitalize mt-2">{{showprofile.trainer?.business_Name || showprofile.institutes}}
+        </h5>
+      </div>
+      <div *ngIf="showprofile.trainer?.f_Name[0] && showprofile.trainer?.l_Name[0]" class="d-flex align-items-center gap-3">
+        <i class="fa-solid fa-user card-user"> </i>
+        <h6 class="mt-1 text-capitalize"> {{showprofile.trainer?.f_Name + " " + showprofile.trainer?.l_Name}} </h6>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <span class="border rounded" style="padding: 0px 5px;">{{showprofile.trainer?.ratings}}</span> 
+        <span>
+      <ng-container *ngFor="let star of starsArray; let i = index">
+        <i class="fa-solid fa-star"
+          [ngStyle]="{ 'color': i < (showprofile.trainer?.ratings ) ? '#FFAE06' : '#d3d3d3' }"></i>
+      </ng-container>
+    </span>
+      </div>
+
+      <div>
+        <i class="fa-solid fa-location-dot p-2"></i> &nbsp;
+        <span>{{showprofile.trainer?.address1 + ", " + showprofile.trainer?.address2 }}</span>
+        <div class="d-flex gap-3 py-3">
+          <a class="text-dark" href="{{showprofile?.SocialMedias[0]?.facebook}}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Facebook"><i
+              class="fa-brands fa-facebook ms-2 fs-4"></i></a>
+          <a class="text-dark" href="{{showprofile.SocialMedias[0]?.instagram}}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Instagram">
+            <i class="fa-brands fa-instagram ms-2 fs-4"></i></a>
+          <a class="text-dark" href="{{showprofile.SocialMedias[0]?.youtube}}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Youtube">
+            <i class="fa-brands fa-youtube ms-2 fs-4"></i></a>
+          <a class="text-dark" href="{{showprofile.SocialMedias[0]?.Linkdein}}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="linkedin">
+            <i class="fa-brands fa-linkedin ms-2 fs-4"></i></a>
+          <a class="text-dark" href="{{showprofile.SocialMedias[0]?.website}}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Visit Website">
+            <i class="fa-solid fa-globe ms-2 fs-4"></i></a>
+              
+        </div>
+
+      </div>
+
+      <!-- <div class="d-flex align-items-center gap-2 ">
+        <button class="btn btn-phone d-flex align-items-center gap-2"><i class="fa-solid fa-mobile-screen"></i>
+          {{showprofile.trainer.mobile_number}}</button>
+        <button class="btn border-dark d-flex align-items-center gap-2" (click)="handleWhatsAppClick()"> <i
+            class="fa-brands fa-whatsapp fw-bold fs-4" style="color: #30d14e;"></i> Whatsapp</button>
+        <div>
+          <button (click)="shareicon()" class="btn share-button"><i class="fas fa-share-alt"></i> Share</button>
+          <div class="share-container">
+            <div *ngIf="showshare" class="share-options gap-4 p-2">
+              <a (click)="shareOnFacebook()" class="share-option p-1">
+                <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
+              </a>
+              <a (click)="shareOnWhatsApp()" class="share-option p-1">
+                <i class="fab fa-whatsapp fs-1" style="color: #30d14e; text-decoration: none;"></i>
+              </a>
+              <a (click)="copyLink()" class="share-option p-1">
+                <i class="fas fa-link fs-3"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="d-flex flex-wrap align-items-center gap-2 responsive-container">
+        <button class="btn btn-phone d-flex align-items-center gap-2" (click)="makeCall()">
+          <i class="fa-solid fa-mobile-screen"></i> {{showprofile.trainer.mobile_number}}
+        </button>
+        <button class="btn border-dark d-flex align-items-center gap-2" (click)="handleWhatsAppClick()">
+          <i class="fa-brands fa-whatsapp fw-bold fs-4" style="color: #30d14e;"></i> WhatsApp
+        </button>
+        <div class="share-wrapper">
+          <button (click)="shareicon()" class="btn share-button">
+            <i class="fas fa-share-alt"></i> Share
+          </button>
+          <div class="share-container">
+            <div *ngIf="showshare" class="share-options gap-4 p-2">
+              <a (click)="shareOnFacebook()" class="share-option p-1">
+                <i class="fab fa-facebook fs-1" style="color: #0976e4;"></i>
+              </a>
+              <a (click)="shareOnWhatsApp()" class="share-option p-1">
+                <i class="fab fa-whatsapp fs-1" style="color: #30d14e;"></i>
+              </a>
+              <a (click)="copyLink()" class="share-option p-1">
+                <i class="fas fa-link fs-3"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <hr>
+
+      <div class="mt-4">
+        <!-- Skills-->
+        <div class="mt-3" id="Skills" *ngIf="showprofile?.skills[0]">
+          <h5 class="text-color">Skills</h5>
+          <label *ngFor="let skills of showprofile.skills" class="border rounded-pill px-2 me-2 mb-2">{{skills}}</label>
+          <hr>
+        </div>
+
+        <!-- About US -->
+        <div *ngIf="showprofile.About[0]?.about_us" id="About">
+          <h5 class="text-color">About Us</h5>
+          <p style="text-align: left;">{{showprofile.About[0]?.about_us}}</p>
+          <hr *ngIf="showprofile.About[0]?.about_us">
+        </div>
+
+        <!-- Our Services -->
+        <div class="mt-3" id="Services" *ngIf="showprofile.About[0]?.our_services">
+          <h5 class="text-color">Our Services</h5>
+          <p style="text-align: left;">{{showprofile.About[0].our_services}}</p>
+          <hr *ngIf="showprofile.About[0]?.our_services">
+        </div>
+
+
+
+        <div *ngIf="showprofile.Educations[0]?.school && showprofile.Educations[0]?.college && showprofile.Educations[0]?.degree && showprofile.trainer?.role !== 'INSTITUTE'">
+          <h5 class="text-color" id="Education">Education</h5>
+          <table>
+            <tbody>
+              <tr *ngIf="showprofile.Educations[0]?.school">
+                <th>School : </th>
+                <td>{{showprofile.Educations[0].school}}</td>
+              </tr>
+              <tr *ngIf="showprofile.Educations[0]?.college">
+                <th>College :</th>
+                <td>{{showprofile.Educations[0].college}}</td>
+              </tr>
+              <tr *ngIf="showprofile.Educations[0]?.degree">
+                <th>Degree :</th>
+                <td>{{showprofile.Educations[0].degree}}</td>
+              </tr>
+              <tr *ngIf="showprofile.Educations[0]?.university">
+                <th>University :</th>
+                <td>{{showprofile.Educations[0].university}}</td>
+              </tr>
+              <tr *ngIf="showprofile.Educations[0]?.other_details">
+                <th>Other Deatils :</th>
+                <td>{{showprofile.Educations[0].other_details}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+        </div>
+        <div class="mt-4" id="Achievements" *ngIf="showprofile.Educations[0]?.achievements">
+          <h5 class="text-color">Achievements / Certifications</h5>
+          <p>{{showprofile.Educations[0].achievements}}</p>
+          <hr>
+        </div>
+
+
+
+        <!-- Testimonial-->
+        <div *ngIf="showprofile?.testimonials[0]" id="Testimonials">
+          <h5 class="text-color">Testimonial</h5>
+          <div id="carouselExampleDark" class="carousel carousel-dark slide">
+            <div class="carousel-inner">
+              <div *ngFor="let testimonial of showprofile.testimonials; let i = index" class="carousel-item "
+                [class.active]="i === 0" [attr.data-bs-interval]="i === 0 ? 10000 : 20000">
+                <div class="px-2 pt-1" style="height: auto !important;">
+                    <h2 class="text-center fw-bold" style="color: var(--btndarkColor);">{{testimonial?.Testimonial_Title}}</h2>
+                    <p >{{testimonial?.Testimonial_Description}}</p>
+                  </div>
+              </div>
+            </div>
+            <div class="carousel-indicators" style="position: static !important;">
+              <button *ngFor="let testimonial of showprofile.testimonials; let i = index" type="button"
+                [attr.data-bs-target]="'#carouselExampleDark'" [attr.data-bs-slide-to]="i" [class.active]="i === 0"
+                [attr.aria-current]="i === 0 ? 'true' : null" [attr.aria-label]="'Slide ' + (i + 1)">
+              </button>
+            </div>
+          </div>
+          <hr>
+        </div>
+
+
+
+        <!-- Questions & Answers -->
+       
+        <div class="mt-2">
+          <h5 class="text-color">Questions & Answers</h5>
+          <p>Would you like to ask a question?</p>
+          <form (ngSubmit)="postquestion()" #questionForm="ngForm">
+            <div class="col-12">
+              <textarea type="text" class="form-control" [(ngModel)]="question.question" name="question" id="question"
+                #questionField="ngModel" required minlength="10" placeholder="Type your question here">
+                  </textarea>
+              <div *ngIf="questionField.invalid && (questionField.touched || questionForm.submitted)" class="text-danger">
+                <small *ngIf="questionField.errors?.['required']">Question is required.</small>
+                <small *ngIf="questionField.errors?.['minlength']">Question must be at least 10 characters long.</small>
+              </div>
+            </div>
+            <button type="submit" class="btn btnq mt-3 btn-block">Post Your Question</button>
+          </form>
+        </div>
+
+        <hr>
+
+        <!-- Enquiry -->
+        <div class="mt-3">
+          <h5 class="text-color">Enquiry </h5>
+          <form (ngSubmit)="postEnquiry()" #enquiryForm="ngForm">
+            <div class="col-12">
+              <textarea type="text" class="form-control" [(ngModel)]="enquiry.description" name="description"
+                id="description" #enquiryField="ngModel" required minlength="10"
+                placeholder="Type your enquiry here"></textarea>
+              <div *ngIf="enquiryField.invalid && (enquiryField.touched || enquiryForm.submitted)" class="text-danger">
+                <small *ngIf="enquiryField.errors?.['required']">Enquiry is required.</small>
+                <small *ngIf="enquiryField.errors?.['minlength']">Enquiry must be at least 10 characters long.</small>
+              </div>
+            </div>
+            <button type="submit" class="btn btnq mt-3 btn-block ">Enquiry Now</button>
+          </form>
+        </div>
+
+        <hr>
+
+        <!-- Book Appointment -->
+        <div class="mt-3">
+          <h5 class="text-color">Book Appointment</h5>
+          <form (ngSubmit)="BookAppoinment()" #ApmtForm="ngForm">
+            <div class="mb-3">
+              <label class="form-label">Select Date</label>
+              <input class="form-control" type="date" class="form-control" name="date" id="date"
+                [(ngModel)]="Appoinment.date" #dateField="ngModel" required>
+              <div *ngIf="dateField.invalid && (dateField.touched || ApmtForm.submitted)" class="text-danger">
+                <small *ngIf="dateField.errors?.['required']">Date is required.</small>
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Select Time</label>
+              <input class="form-control" type="time" class="form-control" name="time" id="time"
+                [(ngModel)]="Appoinment.time" #timeField="ngModel" required>
+              <div *ngIf="timeField.invalid && (timeField.touched || ApmtForm.submitted)" class="text-danger">
+                <small *ngIf="timeField.errors?.['required']">Time is required.</small>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btnq mt-3 btn-block ">Book Now</button>
+            </div>
+          </form>
+        </div>
+
+        <hr>
+
+        <!-- Write Review -->
+        <div class="my-3">
+          <h5 class="text-color">Write Review</h5>
+          <div class="row">
+            <form (ngSubmit)="postreview()" #reviewform="ngForm">
+
+              <div class="d-flex gap-2 star-rating">
+                <span *ngFor="let i of stars; let index = index" class="fa fa-star"
+                  [ngClass]="{'checked': index < rating}" (click)="toggleRating(index + 1)"
+                  style="cursor: pointer;"></span>
+                <span>{{ rating }}</span>
+              </div>
+              <div class="my-3">
+                <textarea class="form-control" placeholder="Message" [(ngModel)]="review.review" name="review"
+                  id="review" #reviewField="ngModel" required></textarea>
+                <div *ngIf="reviewField.invalid && (reviewField.touched || reviewform.submitted)" class="text-danger">
+                  <small *ngIf="reviewField.errors?.['required']">Review is required.</small>
+                </div>
+              </div>
+              <div>
+                <button type="submit" class="btn btnq">Submit you'r Review</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+        <!-- social Media icon and links -->
+        <!-- <div class="mt-5 fs-4">
+                <p><a class="text-dark" href="mailto:contact@ximboa.io"> <i class="fa-regular fa-envelope"></i> Send
+                        Enquiry by Email</a></p>
+                <p><a class="text-dark" href="tel:{{showprofile.trainer.mobile_number}}"><i
+                            class="fa-solid fa-mobile-screen-button"></i> Get Information by phone</a></p>
+                <p><a class="text-dark" href="{{showprofile.SocialMedias?.facebook}}"><i
+                            class="fa-brands fa-facebook"></i> Facebook</a></p>
+                <p><a class="text-dark" href="{{showprofile.SocialMedias?.instagram}}"><i
+                            class="fa-brands fa-instagram"></i> Instagram</a></p>
+                <p><a class="text-dark" href="{{showprofile.SocialMedias?.youtube}}"><i class="fa-brands fa-youtube"></i>
+                        YouTube</a></p>
+                <p><a class="text-dark" href="{{showprofile.SocialMedias?.Linkdein}}"><i
+                            class="fa-brands fa-linkedin"></i> Linkedin</a></p>
+
+            </div> -->
+
+
+      </div>
+    </div>
+    <!-- First Row code End hrer -->
+
+
+    <!-- Second Row code start hrer -->
+    <div class="col-sm-12 col-lg-7 border-start px-3" id="Courses">
+      <!-- All Courses -->
+      <div *ngIf="AllCourses.length > 0" class="pt-3">
+        <h5 class="text-color">Our Courses</h5>
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+          <div *ngFor="let allcourses of AllCourses" class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
+              <img src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid" alt="...">
+              <div class="card-body ">
+                <div class="d-flex align-items-center trainer-name-container justify-content-between">
+                  <h5 class="card-title  text-capitalize" (mouseenter)="showcourseName = true"
+                    (mouseleave)="showcourseName = false">
+                    {{ truncatecourseName(allcourses.course_name) }}
+                  </h5>
+                  <h5 *ngIf="showcourseName" class="card-title full-name rounded"
+                    style="font-size: 14px; margin-top: 70px;">{{allcourses.course_name}}</h5>
+                  <small>{{allcourses.online_offline }}</small>
+                </div>
+                <span >{{allcourses.category_name }}</span>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center gap-2  trainer-name-container">
+                    <p><img src="{{allcourses.trainer_image}}" class="rounded-circle" height="20px" width="20px" alt="">
+                    </p>
+                    <p class="card-title  text-capitalize pb-1" (mouseenter)="showbusinessName = true"
+                      (mouseleave)="showbusinessName = false">
+                      {{ trunbusinessName(allcourses.business_Name) }}
+                    </p>
+                    <p *ngIf="showbusinessName" class=" full-name rounded" style="font-size: 13px; margin-top: 79px;">
+                      {{allcourses.business_Name }}</p>
+                  </div>
+                  <p>{{allcourses.course_rating }} <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i>
+                  </p>
+                </div>
+              </div>
+              <div class="card-footer d-flex align-items-center justify-content-between">
+                <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration }} Weeks</p>
+                <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{
+                  getFormattedPrice(allcourses.course_price) }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-end ">
+            <button class="border border-0  me-2" (click)="AllCoursespreviousPageBatches()" [disabled]="currentPage === 1"><i
+                class="fa-solid fa-angles-left text-primary"></i></button>
+                <span>Page {{ currentPage }} of {{ totalPagescourses() }}</span>
+            <button class="border border-0 ms-2" (click)="AllCoursesnextPageBatches()" 
+            [disabled]="currentPage >= totalPagescourses()">
+            <i class="fa-solid fa-angles-right text-primary"></i></button>
+        </div>
+        <hr>
+      </div>
+      <!-- current batches -->
+          <!-- <div *ngIf="currentBatches.length > 0" class="pt-3">
+            <h5 class="text-color">Current Batches</h5>
+            <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+              <div *ngFor="let allcourses of currentBatches" class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
+                  <img src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid" alt="...">
+                  <div class="card-body ">
+                    <div class="d-flex align-items-center trainer-name-container justify-content-between">
+                      <h5 class="card-title  text-capitalize" (mouseenter)="showcourseName = true"
+                        (mouseleave)="showcourseName = false">
+                        {{ truncatecourseName(allcourses.course_name) }}
+                      </h5>
+                      <h5 *ngIf="showcourseName" class="card-title full-name rounded"
+                        style="font-size: 14px; margin-top: 70px;">{{allcourses.course_name}}</h5>
+                      <small>{{allcourses.online_offline }}</small>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center gap-2  trainer-name-container">
+                        <p><img src="{{allcourses.trainer_image}}" class="rounded-circle" height="20px" width="20px" alt="">
+                        </p>
+                        <p class="card-title  text-capitalize" (mouseenter)="showbusinessName = true"
+                          (mouseleave)="showbusinessName = false">
+                          {{ trunbusinessName(allcourses.business_Name) }}
+                        </p>
+                        <p *ngIf="showbusinessName" class=" full-name rounded" style="font-size: 13px; margin-top: 79px;">
+                          {{allcourses.business_Name }}</p>
+                      </div>
+                      <p>{{allcourses.course_rating }} <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i>
+                      </p>
+                    </div>
+                    <button class="left-side-top rounded-pill">{{allcourses.category_name }}</button>
+                  </div>
+                  <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration }} Weeks</p>
+                    <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{
+                      getFormattedPrice(allcourses.course_price) }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-end ">
+              <button class="border border-0  me-2" (click)="previousPageBatches()" [disabled]="currentPageBatches === 1"><i
+                  class="fa-solid fa-angles-left text-primary"></i></button>
+              <span>Page {{currentPageBatches}} of {{totalPagesBatches()}}</span>
+              <button class="border border-0 ms-2" (click)="nextPageBatches()"
+                [disabled]="currentPageBatches === totalPagesBatches()"><i
+                  class="fa-solid fa-angles-right text-primary"></i></button>
+            </div>
+            <hr>
+          </div> -->
+      <!-- upcoming batches -->
+          <!-- <div *ngIf="upcomingBatches.length > 0" class="mt-3">
+            <h5 class="text-color">Upcoming Batches</h5>
+            <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-3 gx-3 mt-3">
+              <div *ngFor="let allcourses of upcomingBatches" class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
+                  <img src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid" alt="...">
+                  <div class="card-body ">
+                    <div class="d-flex align-items-center trainer-name-container justify-content-between">
+                      <h5 class="card-title  text-capitalize" (mouseenter)="showupcommingName = true"
+                        (mouseleave)="showupcommingName = false">
+                        {{ truncateupcomingName(allcourses.course_name) }}
+                      </h5>
+                      <h5 *ngIf="showupcommingName" class="card-title full-name rounded"
+                        style="font-size: 14px; margin-top: 70px;">{{allcourses.course_name}}</h5>
+                      <small>{{allcourses.online_offline }}</small>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center gap-2  trainer-name-container">
+                        <p><img src="{{allcourses.trainer_image}}" class="rounded-circle" height="20px" width="20px" alt="">
+                        </p>
+                        <p class="card-title  text-capitalize" (mouseenter)="showupcommingbusinessName = true"
+                          (mouseleave)="showupcommingbusinessName = false">
+                          {{ trunupcommingbusinessName(allcourses.business_Name) }}
+                        </p>
+                        <p *ngIf="showupcommingbusinessName" class=" full-name rounded"
+                          style="font-size: 13px; margin-top: 79px;">{{allcourses.business_Name }}</p>
+                      </div>
+                      <p>{{allcourses.course_rating }} <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i>
+                      </p>
+                    </div>
+                    <button class="left-side-top rounded-pill">{{allcourses.category_name }}</button>
+                  </div>
+                  <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration }} Weeks</p>
+                    <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{
+                      getFormattedPrice(allcourses.course_price) }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pagination-controls text-end">
+              <button class="border border-0 me-2" (click)="previousPageUpcomingBatches()"
+                [disabled]="currentPageUpcomingBatches === 1"><i class="fa-solid fa-angles-left text-primary"></i></button>
+              <span>Page {{currentPageUpcomingBatches}} of {{totalPagesUpcomingBatches()}}</span>
+              <button class="border border-0 ms-2" (click)="nextPageUpcomingBatches()"
+                [disabled]="currentPageUpcomingBatches === totalPagesUpcomingBatches()"><i
+                  class="fa-solid fa-angles-right text-primary"></i></button>
+            </div>
+            <hr>
+          </div> -->
+
+
+      <!-- All Events     -->
+      <div *ngIf="AllEvents.length > 0" class="mb-2" id="Events">
+        <h5 class="text-color">Our Events</h5>
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+          <div *ngFor="let Event of AllEvents" class="col-sm-12 col-md-3 col-lg-6 mb-3">
+            <div class="card" routerLink="/eventdetails/{{Event._id}}">
+              <img src="{{Event.event_thumbnail}}" class="card-img-top img-fluid" alt="...">
+              <div class="card-body text">
+                <div class="d-flex align-items-center justify-content-between gap-1">
+                  <span>
+                    <label class="poppins-semibold-italic text-muted" style="font-size: 12px;">{{Event.event_date |
+                      date: 'MMM'}}</label><br>
+                    <span class="poppins-semibold-italic" style="font-size: 24px;">{{Event.event_date | date:
+                      'dd'}}</span>
+                  </span>
+                  <span>
+                    <p class="card-title poppins-semibold-italic">{{Event.event_name}}</p>
+                  </span>
+                  <span class="text-center">
+                    <span class="poppins-semibold-italic"> {{Event.event_type}} </span> <br>
+                    <i *ngIf="Event.event_type === 'Online'" class="fas fa-circle-play text-muted"></i>
+                    <i *ngIf="Event.event_type === 'Offline'" class="fas fa-location-dot"></i>
+                  </span>
+                </div>
+                <div class="d-flex align-items-center gap-2 justify-content-center">
+                  <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                    width="30px" alt="">
+                  <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                    width="30px" alt="">
+                  <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                    width="30px" alt="">
+                  <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                    width="30px" alt="">
+                  <label class="p-2 border rounded-circle"> +35</label>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-2">
+                  <button class="btn  rounded  text-light poppins-regular"
+                    style="font-size: 12px;background-color: var(--TextColor);">Book Seat</button>
+                  <button class="btn  rounded  text-light poppins-regular"
+                    style="font-size: 12px;background-color: var(--btndarkColor);">View More</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-controls text-end">
+          <button class="border border-0  me-2" (click)="AllEventspreviousPageBatches()" [disabled]="currentPage === 1"><i
+            class="fa-solid fa-angles-left text-primary"></i></button>
+            <span>Page {{ currentPage }} of {{ totalPagesEvents() }}</span>
+        <button class="border border-0 ms-2" (click)="AllEventsnextPageBatches()" 
+        [disabled]="currentPage >= totalPagesEvents()">
+        <i class="fa-solid fa-angles-right text-primary"></i></button>
+        </div>
+        <hr>
+      </div>
+
+      <!-- Online Events -->
+          <!-- <div *ngIf="onlineEvents.length > 0" class="mb-2" id="Events">
+            <h5 class="text-color">Online Events</h5>
+            <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+              <div *ngFor="let Event of onlineEvents" class="col-sm-12 col-md-3 col-lg-6 mb-3">
+                <div class="card" routerLink="/eventdetails/{{Event._id}}">
+                  <img src="{{Event.event_thumbnail}}" class="card-img-top img-fluid" alt="...">
+                  <div class="card-body text">
+                    <div class="d-flex align-items-center justify-content-between gap-1">
+                      <span>
+                        <label class="poppins-semibold-italic text-muted" style="font-size: 12px;">{{Event.event_date |
+                          date: 'MMM'}}</label><br>
+                        <span class="poppins-semibold-italic" style="font-size: 24px;">{{Event.event_date | date:
+                          'dd'}}</span>
+                      </span>
+                      <span>
+                        <p class="card-title poppins-semibold-italic">{{Event.event_name}}</p>
+                      </span>
+                      <span class="text-center">
+                        <span class="poppins-semibold-italic"> {{Event.event_type}} </span> <br>
+                        <i *ngIf="Event.event_type === 'Online'" class="fas fa-circle-play text-muted"></i>
+                        <i *ngIf="Event.event_type === 'Offline'" class="fas fa-location-dot"></i>
+                      </span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 justify-content-center">
+                      <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                        width="30px" alt="">
+                      <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                        width="30px" alt="">
+                      <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                        width="30px" alt="">
+                      <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                        width="30px" alt="">
+                      <label class="p-2 border rounded-circle"> +35</label>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mt-2">
+                      <button class="btn  rounded  text-light poppins-regular"
+                        style="font-size: 12px;background-color: var(--TextColor);">Book Seat</button>
+                      <button class="btn  rounded  text-light poppins-regular"
+                        style="font-size: 12px;background-color: var(--btndarkColor);">View More</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pagination-controls text-end">
+              <button class="border border-0 me-2" (click)="previousPageOnlineEvents()"
+                [disabled]="currentPageOnlineEvents === 1"><i class="fa-solid fa-angles-left text-primary"></i></button>
+              <span>Page {{currentPageOnlineEvents}} of {{totalPagesOnlineEvents()}}</span>
+              <button class="border border-0 ms-2" (click)="nextPageOnlineEvents()"
+                [disabled]="currentPageOnlineEvents === totalPagesOnlineEvents()"><i
+                  class="fa-solid fa-angles-right text-primary"></i></button>
+            </div>
+            <hr>
+          </div> -->
+
+      <!-- Offline Events -->
+          <!-- <div *ngIf="offlineEvents.length > 0">
+            <h5 class="text-color">Offline Events</h5>
+            <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+              <div *ngFor="let Event of offlineEvents" class="col-sm-12 col-md-3 col-lg-6 mb-3">
+                <div class="card" routerLink="/eventdetails/{{Event._id}}">
+                  <img src="{{Event.event_thumbnail}}" class="card-img-top img-fluid" alt="...">
+                  <div class="card-body text">
+                    <div class="d-flex align-items-center justify-content-between gap-1">
+                      <span>
+                        <label class="poppins-semibold-italic text-muted" style="font-size: 12px;">{{Event.event_date |
+                          date: 'MMM'}}</label><br>
+                        <span class="poppins-semibold-italic" style="font-size: 24px;">{{Event.event_date | date:
+                          'dd'}}</span>
+                      </span>
+                      <span>
+                        <p class="card-title poppins-semibold-italic">{{Event.event_name}}</p>
+                      </span>
+                      <span class="text-center">
+                        <span class="poppins-semibold-italic"> {{Event.event_type}} </span> <br>
+                        <i *ngIf="Event.event_type === 'Online'" class="fas fa-circle-play text-muted"></i>
+                        <i *ngIf="Event.event_type === 'Offline'" class="fas fa-location-dot"></i>
+                      </span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 justify-content-center">
+                      <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                        width="30px" alt="">
+                      <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                        width="30px" alt="">
+                      <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                        width="30px" alt="">
+                      <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                        width="30px" alt="">
+                      <label class="p-2 border rounded-circle"> +35</label>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mt-2">
+                      <button class="btn  rounded  text-light poppins-regular"
+                        style="font-size: 12px;background-color: var(--TextColor);">Book Seat</button>
+                      <button class="btn  rounded  text-light poppins-regular"
+                        style="font-size: 12px;background-color: var(--btndarkColor);">View More</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pagination-controls text-end">
+              <button class="border border-0 me-2" (click)="previousPageOfflineEvents()"
+                [disabled]="currentPageOfflineEvents === 1"><i class="fa-solid fa-angles-left text-primary"></i></button>
+              <span>Page {{currentPageOfflineEvents}} of {{totalPagesOfflineEvents()}}</span>
+              <button class="border border-0 ms-2" (click)="nextPageOfflineEvents()"
+                [disabled]="currentPageOfflineEvents === totalPagesOfflineEvents()"><i
+                  class="fa-solid fa-angles-right text-primary"></i></button>
+            </div>
+            <hr>
+          </div> -->
+
+
+      <!-- Products -->
+      <div *ngIf="AllProducts.length > 0" class="" id="Products">
+        <h5 class="text-color">Our Products</h5>
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-3">
+          <div *ngFor="let product of AllProducts" class="col-sm-12 col-md-3 col-lg-6 mb-3">
+            <div class="card productcard">
+              <img src="{{product.product_image}}" routerLink="/productdetails/{{product._id}}"
+                class="card-img-top img-fluid" alt="...">
+              <button routerLink="/productdetails/{{product._id}}" class="btn btn-light rounded onproducthover">Add to
+                cart</button>
+              <!-- <span class="onproducthoverflag rounded px-3">{{product.identityFlag}}</span> -->
+              <div class="card-body text-center mb-0 pt-0">
+                <div class="d-flex align-items-center justify-content-between mt-1">
+                  <p class="m-0 p-0 text-end w-25"></p>
+                  <div class="w-50 text-center">
+                    <ng-container *ngFor="let star of starsArray; let i = index">
+                      <i class="fa-solid fa-star"
+                        [ngStyle]="{ 'color': i < (product.products_rating ) ? '#FFAE06' : '#d3d3d3' }"></i>
+                    </ng-container>
+                  </div>
+                  <small class="m-0 p-0 text-end w-25">{{product.product_flag }}</small>
+                </div>
+                <h5 class="card-title">{{product.products_name}}</h5>
+                <p class="text-muted poppins-regular" style="font-size: 12px;">{{product.products_category}}</p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <i class="fa-solid fa-cart-shopping fs-5" style="color: #417CE8;"></i>
+                  <span class="d-flex align-items-center gap-2">
+                    <small class="text-decoration-line-through">₹ {{product.products_price}}</small>
+                    <b>₹ {{product.products_selling_price}}</b>
+                  </span>
+                  <i class="fa-regular fa-heart fs-5" style="color: #417CE8;"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-controls text-end">
+          <button class="border border-0  me-2" (click)="AllProductspreviousPage()" [disabled]="currentPage === 1"><i
+            class="fa-solid fa-angles-left text-primary"></i></button>
+            <span>Page {{ currentPage }} of {{ totalPagesProducts() }}</span>
+        <button class="border border-0 ms-2" (click)="AllProductsnextPage()" 
+        [disabled]="currentPage >= totalPagesProducts()">
+        <i class="fa-solid fa-angles-right text-primary"></i></button>        </div>
+
+      </div>
+
+
+      <div *ngIf="showreviewdata.length > 0" class="row border-top mt-3" id="Reviews">
+        <div class="col-sm-12 col-lg-12  pt-2">
+          <h5 class="text-color">Reviews & Ratings</h5>
+          <div class="d-flex align-items-center gap-3 mt-1">
+            <h6 class="mt-1 p-2 rounded" style="background-color: var(--btndarkColor);color: white;">{{showprofile.trainer?.ratings}}</h6>
+            <div style="font-size: small;">
+              <p class="m-0 p-0">{{showreviewdata.length}} Reviews</p>
+              <p class="m-0 p-0">rating index based on {{showreviewdata.length}} ratings across the web.</p>
+            </div>
+          </div>
+
+          <h5 class="my-2">User Reviews </h5>
+          <div *ngFor="let review of showreviewdata | paginate: { itemsPerPage: 2, currentPage: p}"
+            class="row g-0 border rounded mb-4 p-3">
+            <div class="d-flex justify-content-between">
+              <div class="d-flex gap-3">
+                <img src="{{review.user_image}}" class="img-resize" alt="">
+                <div>
+                  <small class="m-0 fw-bold">{{ review.f_Name + " " + review.l_Name}}</small><br>
+                  <!-- Star rating section -->
+                  <span *ngFor="let star of starsArray; let i = index"
+                    [ngClass]="{'fa fa-star checked': i < review.star_count, 'fa fa-star': i <= review.star_count }">
+                  </span>
+
+                </div>
+              </div>
+              <div class="text-end">
+                <label>{{review.createdAt | date}}</label>
+              </div>
+            </div>
+            <div class="col-12 mt-2">
+              <p>{{review.review}}</p>
+            </div>
+            <div class="d-flex align-items-center justify-content-end fw-bold mt-1">
+              <label><i class="fa-regular fa-thumbs-up"></i> Helpful (2)</label>
+            </div>
+          </div>
+          <pagination-controls style="float:right;font-size: small;" (pageChange)="p = $event"></pagination-controls>
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+<!-- Modal For Gallery -->
+<div class="modal fade" id="gallery" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">All Images</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="showprofile.gallarys.length > 0" class="row">
+          <div *ngFor="let gallary of showprofile.gallarys" class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <img class="img-fluid rounded w-100 h-100" src="{{gallary.photos}}" alt="">
+          </div>
+        </div>
+        <div *ngIf="showprofile.gallarys.length === 0" class="row text-center">
+          <img src="../../assets/No data-Found old.png" class="object-fit-cover img-fluid" height="300px" width="200px"
+            alt="">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Model For User Registration -->
+
+<div class="modal fade" id="CheckLoggedIN" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="text-end">
+        <button type="button" class="btn-close mt-4 me-4" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body px-5">
+        <form (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+          <div class="row desktop">
+            <div class="row">
+              <div class="col-sm-12 mb-3">
+                <h4><b>Register</b></h4>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="f_Name" class="form-label">First Name <sup>*</sup></label>
+                <input type="text" class="form-control form-control-lg rounded-input" placeholder="" id="f_Name"
+                  [(ngModel)]="userData.f_Name" name="f_Name" required #FirstName="ngModel">
+                <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="text-danger">
+                  First Name is required.
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="l_Name" class="form-label">Last Name <sup>*</sup></label>
+                <input type="text" class="form-control form-control-lg rounded-input" placeholder="" id="l_Name"
+                  [(ngModel)]="userData.l_Name" name="l_Name" required #LastName="ngModel">
+                <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)" class="text-danger">
+                  Last Name is required.
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="middle_Name" class="form-label">Middle Name <span
+                    class="text-muted">(optional)</span></label>
+                <input type="text" class="form-control form-control-lg rounded-input" placeholder="" id="middle_Name"
+                  [(ngModel)]="userData.middle_Name" name="middle_Name" #MiddleName="ngModel">
+              </div>
+
+
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="email_id" class="form-label">Your Email <sup>*</sup></label>
+                <input type="email" class="form-control form-control-lg rounded-input" placeholder="" id="email_id"
+                  [(ngModel)]="userData.email_id" name="email_id" required email #email="ngModel">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                  <div *ngIf="email.errors?.['required']">Email is required.</div>
+                  <div *ngIf="email.errors?.['email']">Please enter a valid email address.</div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="mobile_number" class="form-label">Mobile Number <sup>*</sup></label>
+                <input type="number" pattern="^[0-9]{10}$" class="form-control form-control-lg rounded-input"
+                  minlength="10" maxlength="10" pattern="^\d{10}$" id="mobile_number"
+                  [(ngModel)]="userData.mobile_number" name="mobile_number" required #mobile="ngModel">
+                <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="text-danger">
+                  <div *ngIf="mobile.errors?.['required']">Mobile Number is required.</div>
+                  <div *ngIf="mobile.errors?.['pattern']">Mobile Number must be exactly 10 digits.</div>
+                </div>
+
+              </div>
+
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="password" class="form-label">Password <sup>*</sup></label>
+                <div class="d-flex align-items-center inputbtn">
+                  <input [type]="show ? 'text' : 'password'" class="form-control form-control-lg rounded-input h-25"
+                    id="password" minlength="8" [(ngModel)]="userData.password" name="password" required
+                    #password="ngModel" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
+                  <button type="button" (click)="togglePassword()">
+                    <i class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+                    <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+                  </button>
+                </div>
+
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                  <div *ngIf="password.errors?.['required']">Password is required.</div>
+                  <div *ngIf="password.errors?.['pattern']">
+                    Password must be at least 8 characters long, include at least one uppercase letter, one lowercase
+                    letter, one number, and one special character.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <div class="form-check pt-3">
+                  <input class="form-check-input border-dark" type="checkbox" [(ngModel)]="rememberMe" name="rememberMe"
+                    id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">I accept the</label> &nbsp;
+                  <label style="color: #6149CD;">Terms and Conditions</label>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <div class="form-check pt-3">
+                  <label data-bs-dismiss="modal" class="form-check-label" for="flexCheckDefault">Already Have an Account ? <a
+                      routerLink="/signin"> Login </a></label>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="pt-5 mb-3 text-center">
+              <button type="submit" class="btn btn-primary rounded-pill px-5" [disabled]="!signUpForm.form.valid">Sign
+                up</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

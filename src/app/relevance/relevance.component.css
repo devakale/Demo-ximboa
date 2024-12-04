@@ -1,0 +1,47 @@
+.font-style{
+    font-size: large;
+    color: white;
+
+    h6{
+      cursor: pointer;
+    }
+}
+
+.searchinput{
+    padding-left: 40px;
+    font-size: 14px;
+}
+.inputContainer1 > i{
+    position: absolute;
+    color: black;
+    /* margin-left: 10px; */
+  }
+
+
+.active-link {
+  border-bottom: 3px solid #fff; 
+  padding-bottom: 1px; 
+  color: #fff; 
+}
+
+.dropdown>.dropdown-menu,
+.dropdown.open>.dropdown-menu {
+   display: block !important;
+   opacity: 0;
+   visibility: hidden;
+   transition: all ease 0.2s;
+}
+.dropdown:hover>.dropdown-menu,
+.dropdown.open:hover>.dropdown-menu { 
+   opacity: 1;
+   visibility: visible; 
+}
+ 
+.dropdown-menu {
+  left: auto;     
+  right: 0;       
+}
+
+
+
+

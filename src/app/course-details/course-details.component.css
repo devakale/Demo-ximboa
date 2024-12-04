@@ -1,0 +1,260 @@
+.text-color{
+    color: var(--TextColor);
+}
+.card-user{
+    border: 1px solid black ;
+    padding: 5px 5px 0 5px;
+    border-radius: 5px;
+  }
+  .checked {
+    color: orange;
+  }
+  .btn-phone{
+    color: white;
+    background-color: var(--TextColor);
+  }
+ 
+.srolltabs{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+
+  li{
+    list-style: none;
+    cursor: pointer;
+  }
+}
+
+
+
+.ViewmoreArrow{
+  cursor: pointer;
+  i{
+    color: var(--TextColor);
+  }
+}
+  
+.btnq{
+  background-color: var(--TextColor);
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.card-title{
+    font-size: medium;
+}
+
+.left-side-top{
+    background-color: #F9C4C4;
+    color: black;
+    padding: 5px 15px;
+    font-size: small;
+    border: none;
+    position: absolute;
+    top: 0%;
+    margin-top: 10px;
+  }
+
+  .img-resize{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+
+  .carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #000; /* Adjust color as needed */
+  }
+
+  .textonimage{
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 120px;
+  }
+
+  .onmobile {
+    display: flex;
+    flex-wrap: wrap; /* Allows buttons to wrap to the next line if needed */
+    gap: 1rem; /* Adjust gap as needed */
+    padding-top: 0.5rem; /* Adjust padding as needed */
+  }
+  
+  .onmobile .btn {
+    flex: 1 1 auto; /* Allows buttons to grow and shrink */
+  }
+
+  @media only screen and (max-width: 600px) {
+    .onmobile {
+      flex-direction: column; /* Stack buttons vertically on mobile screens */
+      align-items: stretch; /* Stretch buttons to fill the container width */
+    }
+  
+    .onmobile .btn {
+      width: 100%; /* Ensure buttons take up full width */
+      margin-bottom: 0.5rem; /* Add space between buttons */
+    }
+  }
+
+
+
+
+.share-options {
+  position: absolute;
+    display: flex; 
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+    z-index: 1000;
+    padding: 7px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.share-option {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.share-button {
+  background-color: #007bff; 
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.share-button i {
+  font-size: 18px; 
+}
+
+.share-button:hover {
+  background-color: #0056b3; 
+}  
+
+
+
+.star-rating{
+  .fa-star {
+  font-size: 18px; 
+  }
+
+.checked {
+  color: gold;  
+}
+
+}
+
+.fa-star {
+  color: lightgray; /* Default star color */
+}
+
+.checked {
+  color: gold; /* Color for filled stars */
+}
+
+
+/* textarea{
+  height: 70px;
+   overflow-y: scroll;
+    width: 100%;
+} */
+
+/* .active-link {
+  border-bottom: 2px solid #307DFF; 
+  color: #307DFF; 
+} */
+
+
+.productcard {
+  position: relative;
+}
+
+.productcard:hover .onproducthover {
+  display: block; /* Shows on hover */
+}
+
+.onproducthover {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  display: none; /* Initially hidden */
+}
+
+.sign-in-btn{
+  background: #3078FF  ;
+  color: white;
+  padding: 10px;
+}
+
+
+/* Mobile view (less than 576px) */
+@media (max-width: 575.98px) {
+  .galleryimg > img {
+    height: auto !important; /* Maintain natural height */
+    width: auto !important; /* Maintain natural width */
+  }
+}
+
+/* Tablet view (between 576px and 768px) */
+@media (min-width: 576px) and (max-width: 1024px) {
+  .galleryimg > img {
+    height: auto !important; /* Maintain natural height */
+    width: auto !important; /* Maintain natural width */
+  }
+}
+
+/* Larger screens (768px and up) */
+@media (min-width: 1024px) {
+  .galleryimg > img {
+    height: 100px !important; /* Fixed height */
+    width: 114px !important; /* Fixed width */
+  }
+  .gallary-section{
+    height: 207px !important;
+  }
+  .main-four-image{
+    height: 206px !important;
+  }
+}
+
+
+
+.trainer-name-container {
+  position: relative;
+  display: inline-block;
+}
+
+.full-name {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  font-size: small;
+  padding: 5px;
+  z-index: 1;
+}
+
+.trainer-name-container:hover .full-name {
+  display: block;
+}
+
+.custom-tooltip {
+  --bs-tooltip-bg: var(--TextColor); /* Replace var(--bd-violet-bg) with the actual color */
+  --bs-tooltip-color: #ffffff; /* Replace var(--bs-white) with the actual color */
+}

@@ -1,0 +1,43 @@
+.table-responsive {
+    overflow-x: auto;
+}
+.table td {
+    white-space: normal;
+    word-break: break-word;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+@media (max-width: 576px) {
+    .btn-sm {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.5rem;
+    }
+    .table thead {
+        display: none;
+    }
+    .table tbody tr {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #ddd;
+    }
+    .table tbody tr td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .btn-sm {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.9rem;
+        display: block;
+        margin: auto; /* Center the button horizontally */
+    }
+    td .btn {
+        min-width: 90px; /* Ensure a consistent button size */
+    }
+}
+

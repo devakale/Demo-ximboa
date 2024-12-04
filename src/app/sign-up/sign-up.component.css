@@ -1,0 +1,41 @@
+.container-fluid{
+    /* height: 100vh; */
+    background-color: #F9F8FF;
+}
+input{
+    background-color: #FFFFFF;
+}
+label{
+    font-weight: bold;
+}
+.sign-in-btn{
+    background: #3078FF  ;
+    color: white;
+    padding: 10px;
+}
+.rounded-input{
+    border-radius: 15px;
+}
+.inputbtn{
+    position: relative;
+}
+.inputbtn > button{
+    position: absolute;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+
+@media only screen and (min-width: 600px) {
+    .desktop{
+        width: 80%;
+        margin-left: 10%;
+        padding-top: 20px;
+    }
+}
+
+
+sup{
+    color: red;
+}

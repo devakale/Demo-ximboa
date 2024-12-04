@@ -1,0 +1,31 @@
+.list > li{
+        margin-top: 20px;
+        font-size: 18px;
+        list-style: none;
+        display: flex;
+        unicode-bidi: isolate;
+        line-height: 32px;
+        cursor: pointer;
+        
+ i{
+    margin-right: 10px;
+    font-size: 20px;
+ }
+}
+
+.active {
+  color: var(--TextColor);
+  font-weight: bold;
+  .active i{
+    color:var(--TextColor) ;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .sidebarlgscreen{
+    height: 100%;
+    position: sticky !important;
+    top: 60px;
+    left: 0;
+  }
+}

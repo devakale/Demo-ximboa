@@ -1,0 +1,12 @@
+.text{
+    font-size: 16px;
+    font-family: "Poppins", system-ui;
+    /* padding-bottom: 10px; */
+    /* margin-bottom: 14px; */
+}
+.title{
+    font-size: 32px;
+    font-weight: 800;
+    font-family: "Poppins", system-ui;
+
+}

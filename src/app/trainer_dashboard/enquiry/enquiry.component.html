@@ -1,0 +1,50 @@
+<div class="container">
+    <!-- Responsive Image Section -->
+    <div class="row">
+        <div class="col-12">
+            <img class="img-fluid rounded" src="../../../assets/Enquiry 1 (1).png" alt="Enquiry Image">
+        </div>
+    </div>
+
+    <!-- Responsive Table Section -->
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Mobile Number</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="showenquirydata && showenquirydata.length > 0">
+                        <tr *ngFor="let enquiry of showenquirydata | paginate: { itemsPerPage: itemsPerPage, currentPage: p, totalItems }">
+                            <td>{{ enquiry.user_name }}</td>
+                            <td>{{ enquiry.createdAt }}</td>
+                            <td class="text-truncate" style="max-width: 200px;" title="{{ enquiry.description }}">
+                                {{ enquiry.description }}
+                            </td>
+                            <td>{{ enquiry.email_id }}</td>
+                            <td>{{ enquiry.mobile_number }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- No Data Found Section -->
+                <div *ngIf="!showenquirydata || showenquirydata.length === 0" class="text-center mt-3">
+                    <img src="../../../assets/No data-Found.png" class="img-fluid" alt="No Data Found" style="max-width: 300px; height: auto;">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Pagination Section -->
+    <div class="row mt-3">
+        <div class="col-12 text-end">
+            <pagination-controls (pageChange)="onPageChange($event)" class="pagination-sm"></pagination-controls>
+        </div>
+    </div>
+</div>

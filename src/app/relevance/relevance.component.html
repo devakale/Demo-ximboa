@@ -1,0 +1,67 @@
+  <img src="../../assets/Innner banner.jpg" class="object-fit-cover img-fluid"   alt="Short INFO" >
+
+
+  <div class="container-fluid " style="background-color: #F5F5F5;">
+  
+  <div class="row align-items-center justify-content-between">
+
+    <div class="col-sm-12 col-md-1 col-lg-1 ">
+      <div class="my-2 d-flex align-items-center gap-5  py-2 px-2  border rounded bg-light" style="width: 120px;">
+      <i class="fa-solid fa-sliders"></i>
+      <label>Filter</label>
+    </div>
+    </div>
+
+    
+
+    <div class="col-sm-12 col-md-2 col-lg-2 mb-2" >
+      <select class="form-select" aria-label="Default select example" (change)="updatePlaceholder($event)">
+        <option selected>Select Menu</option>
+        <option value="Courses">Courses</option>
+        <option value="Trainers">Trainers</option>
+        <option value="Products">Products</option>
+        <option value="Events">Events</option>
+      </select>
+      <small class="position-absolute ms-1" style="font-size: x-small;">(Courses/Products/Events/Trainers)</small>
+    </div>
+    
+    <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
+      <div class="d-flex align-items-center justify-content-between inputContainer1 py-2 my-2 position-relative" >
+        <input type="text" (input)="onSearch($event)" class="form-control form-control-lg searchinput" [placeholder]="inputPlaceholder">
+        <i class="fa-solid fa-magnifying-glass fs-5 pt-1 serachlogo"></i>
+      </div>
+    </div>
+    
+
+    <div class="col-sm-12 col-md-2 col-lg-2 mb-2">
+      <select class="form-select py-2" aria-label="Default select example" (change)="onSortOptionChange($event)">
+        <option selected >Sort By</option>
+        <option value="newly_added">Newly Added</option>
+        <option value="most_viewed">Most Viewed</option>
+        <option value="top_rated">Sort by Rated</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row ">
+    <div class="col-sm-12  col-lg-2 mt-1 pt-3 ps-4 rounded" style="background-color:#FFFFFF;">
+      <h5>Categories</h5>
+      <div class="form-check mb-2">
+        <input class="form-check-input border border-dark" type="checkbox" id="selectAll" (change)="onSelectAll($event)" [checked]="areAllCategoriesSelected()">
+        <label class="form-check-label" for="selectAll"> All</label>
+      </div>
+      
+      <div *ngFor="let category of Showcategorydata" class="form-check mb-2">
+        <input class="form-check-input border border-dark" type="checkbox" [id]="category.category_name"
+          (change)="onCategoryChange(category.category_name, $event)" [checked]="isCategorySelected(category.category_name)">
+        <label class="form-check-label" [for]="category.category_name">{{category.category_name}}</label>
+      </div>
+    </div>
+    
+
+    <div class="col-sm-12 col-lg-10">
+
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>

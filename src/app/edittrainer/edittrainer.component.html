@@ -1,0 +1,369 @@
+<div class="container border p-5 mb-3 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+     
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()"> 
+        <div *ngIf="currentRow === 0" class="row">
+          <h2 style="color: var(--TextColor);">Personal Information</h2>
+          
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+            <label for="f_Name" class="col-form-label">First Name</label>
+            <input type="text" class="form-control" id="f_Name" formControlName="f_Name" required readonly style="background-color: whitesmoke;">
+            <div *ngIf="myForm.get('f_Name')?.invalid && (myForm.get('f_Name')?.touched || myForm.get('f_Name')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('f_Name')?.errors?.['required']">First Name is required.</small>
+            </div>
+          </div>
+          
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+            <label for="l_Name" class="col-form-label">Last Name</label>
+            <input type="text" class="form-control" id="l_Name" formControlName="l_Name" required readonly style="background-color: whitesmoke;">
+            <div *ngIf="myForm.get('l_Name')?.invalid && (myForm.get('l_Name')?.touched || myForm.get('l_Name')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('l_Name')?.errors?.['required']">Last Name is required.</small>
+            </div>
+          </div>
+      
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+            <label for="recipient-name" class="col-form-label">Email</label>
+            <input type="email" class="form-control" id="recipient-name" formControlName="email_id" required readonly style="background-color: whitesmoke;">
+            <div *ngIf="myForm.get('email_id')?.invalid && (myForm.get('email_id')?.touched || myForm.get('email_id')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('email_id')?.errors?.['required']">Email is required.</small>
+              <small *ngIf="myForm.get('email_id')?.errors?.['email']">Invalid email format.</small>
+            </div>
+          </div>
+      
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-1">
+            <label for="mobile-number" class="col-form-label">Mobile Number <sup>*</sup></label>
+            <input type="number" class="form-control" id="mobile-number" formControlName="mobile_number" required>
+            <div *ngIf="myForm.get('mobile_number')?.invalid && (myForm.get('mobile_number')?.touched || myForm.get('mobile_number')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('mobile_number')?.errors?.['required']">Mobile Number is required.</small>
+            </div>
+          </div>
+          
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-1">
+            <label for="whatsapp-number" class="col-form-label">WhatsApp Number <sup>*</sup></label>
+            <input type="number" class="form-control" id="whatsapp-number" formControlName="whatsapp_no" required>
+            <div class="d-flex flex-column flex-sm-row">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="same-as-mobile" (change)="onCheckboxChange($event)">
+              <small class="form-check-label me-2" for="same-as-mobile" style="font-size: small;">Same as Mobile Number</small>
+            </div>
+            <div *ngIf="myForm.get('whatsapp_no')?.invalid && (myForm.get('whatsapp_no')?.touched || myForm.get('whatsapp_no')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('whatsapp_no')?.errors?.['required']" style="font-size: small;">WhatsApp Number is required.</small>
+            </div>
+          </div>
+          </div>
+          
+      
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-1">
+            <label for="recipient-name" class="col-form-label">Date of Birth <sup>*</sup></label>
+            <input type="date" class="form-control" id="recipient-name" formControlName="date_of_birth" required>
+            <div *ngIf="myForm.get('date_of_birth')?.invalid && (myForm.get('date_of_birth')?.touched || myForm.get('date_of_birth')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('date_of_birth')?.errors?.['required']">Date of Birth is required.</small>
+            </div>
+          </div>
+      
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+            <label for="address1" class="col-form-label">Address Line 1 <sup>*</sup></label>
+            <input type="text" class="form-control" id="address1" formControlName="address1" required>
+            <div *ngIf="myForm.get('address1')?.invalid && (myForm.get('address1')?.touched || myForm.get('address1')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('address1')?.errors?.['required']">Address Line 1 is required.</small>
+            </div>
+          </div>
+      
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+            <label for="address2" class="col-form-label">Address Line 2 <sup>*</sup></label>
+            <input type="text" class="form-control" id="address2" formControlName="address2" required>
+            <div *ngIf="myForm.get('address2')?.invalid && (myForm.get('address2')?.touched || myForm.get('address2')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('address2')?.errors?.['required']">Address Line 2 is required.</small>
+            </div>
+          </div>
+      
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+            <label for="recipient-name" class="col-form-label">Pincode <sup>*</sup></label>
+            <input type="text" class="form-control" id="recipient-name" formControlName="pincode" maxlength="6" required>
+            <div *ngIf="myForm.get('pincode')?.invalid && (myForm.get('pincode')?.touched || myForm.get('pincode')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('pincode')?.errors?.['required']">Pincode is required.</small>
+              <small *ngIf="myForm.get('pincode')?.errors?.['maxlength']">Pincode is 6 Digit.</small>
+            </div>
+          </div>
+      
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+            <label for="recipient-name" class="col-form-label">City <sup>*</sup></label>
+            <input type="text" class="form-control" id="recipient-name" formControlName="city" required>
+            <div *ngIf="myForm.get('city')?.invalid && (myForm.get('city')?.touched || myForm.get('city')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('city')?.errors?.['required']">City is required.</small>
+            </div>
+          </div>
+      
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+            <label for="recipient-name" class="col-form-label">State <sup>*</sup></label>
+            <input type="text" class="form-control" id="recipient-name" formControlName="state" required>
+            <div *ngIf="myForm.get('state')?.invalid && (myForm.get('state')?.touched || myForm.get('state')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('state')?.errors?.['required']">State is required.</small>
+            </div>
+          </div>
+      
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+            <label for="recipient-name" class="col-form-label">Country <sup>*</sup></label>
+            <input type="text" class="form-control" id="recipient-name" formControlName="country" required>
+            <div *ngIf="myForm.get('country')?.invalid && (myForm.get('country')?.touched || myForm.get('country')?.dirty)" class="text-danger">
+              <small *ngIf="myForm.get('country')?.errors?.['required']">Country is required.</small>
+            </div>
+          </div>
+      
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <button type="submit" class="btn submitbtn">Update Profile</button>
+            <button *ngIf="isTrainer || isAdmin || isSELF_EXPERT || isInstitute" (click)="nextRow()" class="btn nextbtn">Next</button>
+          </div>
+        </div>   
+      </form>
+      
+   
+        <div *ngIf="currentRow === 1" class="row">
+          <form #socialForm="ngForm" (ngSubmit)="onSave(socialForm)">
+            <div class="row">
+                <h2>Social Information</h2>
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                    <label for="facebook" class="col-form-label">Facebook</label>
+                    <input type="text" class="form-control" id="facebook" name="facebook" [(ngModel)]="social.facebook">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                    <label for="instagram" class="col-form-label">Instagram</label>
+                    <input type="text" class="form-control" id="instagram" name="instagram" [(ngModel)]="social.instagram">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                    <label for="youtube" class="col-form-label">Youtube</label>
+                    <input type="text" class="form-control" id="youtube" name="youtube" [(ngModel)]="social.youtube">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                    <label for="Linkdein" class="col-form-label">LinkedIn</label>
+                    <input type="text" class="form-control" id="Linkdein" name="Linkdein" [(ngModel)]="social.Linkdein">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="website" class="col-form-label">Website</label>
+                  <input type="text" class="form-control" id="website" name="website" [(ngModel)]="social.website">
+              </div>
+                <div *ngIf="isFormInvalid && socialForm.submitted" class="text-danger mb-3">At least one field is required</div>
+                <div class="text-end">
+                    <button type="submit" class="btn submitbtn">Save</button>
+                </div>
+            </div>
+        </form>
+        
+      <hr class="mt-3">
+      <form #educationForm="ngForm" (ngSubmit)="onEducation()" *ngIf="!isInstitute">
+        <div class="12">
+            <h2>Educational Information</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="school" class="col-form-label">School Name</label>
+                <input type="text" class="form-control" id="school" 
+                    [(ngModel)]="education.school" name="school" 
+                    #school="ngModel" (ngModelChange)="checkFields()">
+
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="college" class="col-form-label">College Name</label>
+                <input type="text" class="form-control" id="college" 
+                    [(ngModel)]="education.college" name="college" 
+                    #college="ngModel" (ngModelChange)="checkFields()">
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="degree" class="col-form-label">Degree</label>
+                <input type="text" class="form-control" id="degree" 
+                    [(ngModel)]="education.degree" name="degree" 
+                    #degree="ngModel" (ngModelChange)="checkFields()">
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="university" class="col-form-label">University Name</label>
+                <input type="text" class="form-control" id="university" 
+                    [(ngModel)]="education.university" name="university" 
+                    #university="ngModel" (ngModelChange)="checkFields()">
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                <label for="other_details" class="col-form-label">Other Details</label>
+                <input type="text" class="form-control" id="other_details" 
+                    [(ngModel)]="education.other_details" name="other_details" 
+                    #other_details="ngModel" (ngModelChange)="checkFields()">
+            </div>
+            <div *ngIf="isFormInvalid && educationForm.submitted" class="text-danger mb-3">At least one field is required</div>
+    
+            <div class="d-flex align-items-center justify-content-between">
+                <button (click)="previousRow()" class="btn nextbtn">Back</button>
+                <button type="submit" class="btn submitbtn" [disabled]="!isAtLeastOneFieldFilled">Submit</button>
+                <button (click)="nextRow()" class="btn nextbtn">Next</button>
+            </div>
+        </div>
+    </form>
+    <div *ngIf="isInstitute" class="d-flex align-items-center justify-content-between">
+      <button (click)="previousRow()" class="btn nextbtn">Back</button>
+      <button (click)="nextRow()" class="btn nextbtn">Next</button>
+  </div>
+    </div>
+
+    <div *ngIf="currentRow === 2" class="row mt-4">
+        <h2>About us</h2>
+            <form (ngSubmit)="onabout()">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                        <label for="about_us" class="col-form-label">About Us <sup>*</sup></label><br>
+                        <textarea type="text" class="form-control" id="about_us" name="about_us" [(ngModel)]="about.about_us" > </textarea>   
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                        <label for="our_services" class="col-form-label">Services <sup>*</sup></label><br>
+                        <textarea type="text" class="form-control" id="our_services" name="our_services" [(ngModel)]="about.our_services" ></textarea>    
+                    </div>
+                    
+                    <div class="text-end">
+                        <button type="submit" class="btn submitbtn">Save</button>
+                    </div>
+                </div>
+            </form>
+            <hr class="my-3">
+            <h2>Add Skills</h2>
+            <form (ngSubmit)="AddSkills()" #skillsForm="ngForm">
+              <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                      <label for="skills" class="col-form-label">Skills <sup>*</sup> </label><br>
+                      <tag-input 
+                          [(ngModel)]="skills.skills" 
+                          [editable]="true" id="skills" name="skills" 
+                          class="border" 
+                          required>
+                      </tag-input>
+                      <small>Type skill then press Enter button.</small>
+                      <div *ngIf="skillsForm.submitted && !skills.skills?.length" class="text-danger">
+                          Please add at least one skill.
+                      </div>
+                  </div>
+                  
+                  <div class="text-end">
+                      <button type="submit" class="btn submitbtn">Save</button>
+                  </div>
+              </div>
+          </form>
+          
+            <hr class="my-3">
+        <h2>Testimonials</h2> 
+        <form (ngSubmit)="ontestimonials(testimonialForm)" #testimonialForm="ngForm">
+          <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="Testimonial_Title" class="col-form-label">Testimonial Title <sup>*</sup></label><br>
+                  <input type="text" class="form-control" id="Testimonial_Title" name="Testimonial_Title" [(ngModel)]="Testimonial.Testimonial_Title" required>
+                  <div *ngIf="testimonialForm.controls['Testimonial_Title']?.invalid && (testimonialForm.controls['Testimonial_Title']?.touched || testimonialForm.submitted)" class="text-danger">
+                      Testimonial Title is required.
+                  </div>
+              </div>
+      
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="Testimonial_Autor_Name" class="col-form-label">Testimonial Author Name <sup>*</sup></label><br>
+                  <input type="text" class="form-control" id="Testimonial_Autor_Name" name="Testimonial_Autor_Name" [(ngModel)]="Testimonial.Testimonial_Autor_Name" required>
+                  <div *ngIf="testimonialForm.controls['Testimonial_Autor_Name']?.invalid && (testimonialForm.controls['Testimonial_Autor_Name']?.touched || testimonialForm.submitted)" class="text-danger">
+                      Testimonial Author Name is required.
+                  </div>
+              </div>
+      
+              <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                  <label for="Testimonial_Description" class="col-form-label">Testimonials <sup>*</sup></label><br>
+                  <textarea class="form-control" id="Testimonial_Description" name="Testimonial_Description" [(ngModel)]="Testimonial.Testimonial_Description" required></textarea>
+                  <div *ngIf="testimonialForm.controls['Testimonial_Description']?.invalid && (testimonialForm.controls['Testimonial_Description']?.touched || testimonialForm.submitted)" class="text-danger">
+                      Testimonials are required.
+                  </div>
+              </div>
+      
+              <div class="text-end">
+                  <button type="submit" class="btn submitbtn" [disabled]="testimonialForm.invalid">Save</button>
+              </div>
+          </div>
+      </form>
+      
+           <hr class="my-3">
+            <h2 class="mt-3">Gallary</h2>
+                <form (ngSubmit)="onGallary()">
+                    <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                        <label for="photos" class="col-form-label">Upload Images</label><br>
+                        <input type="file" class="form-control" id="photos" (change)="onFileSelected($event)" multiple>
+                        <small>Upload Minimun 8 Images <sup>*</sup></small>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn submitbtn">Save</button>
+                    </div>
+                    </div>
+                </form>
+        
+            <div class="d-flex align-items-center justify-content-start">
+                <button (click)="previousRow()" class="btn nextbtn">Back</button>
+            </div>    
+              
+    </div>
+
+    <!-- <div *ngIf="currentRow === 2" class="row mt-4">
+        <h2>Experience</h2>
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Do you have any experience </label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Years of exprience</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Previous Organization Name</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Languages Known</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Reason of leaving</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Factors of salary dependant</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+
+        <div class="12">
+            <h2>Payroll Information</h2>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Aadhar Card No</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Pan Card No</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Bank Name</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">Account Number</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+            <label for="recipient-name" class="col-form-label">IFSC code</label>
+             <input type="text" class="form-control" id="recipient-name">    
+        </div>
+       
+        <div class="d-flex align-items-center justify-content-between">
+            <button (click)="previousRow()" class="btn text-light rounded-pill" style="background-color: #F96D63;">Back</button>
+            <button class="btn text-light rounded-pill" style="background-color: #674ACB;">Submit</button>
+        </div>
+       
+    </div> -->
+   
+

@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="col-12">
+        <img class="img-fluid rounded" src="../../../assets/reviews banner.jpg" alt="Appointment">
+    </div>
+    <div class="row">
+        <div *ngIf="showReview && showReview.length > 0">
+        <div *ngFor="let review of showReview | paginate: { itemsPerPage: 4, currentPage: p}" class="row g-0 border rounded mb-4 p-3 mt-2">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex gap-3">
+                    <img src="{{review.trainer_image}}" class="img-resize" alt="">
+                    <div>
+                        <small class="m-0 fw-bold">{{ review.user_name}}</small><br>
+                        <!-- Star rating section -->
+                        <span *ngFor="let star of starsArray; let i = index"
+                            [ngClass]="{'fa fa-star checked': i < review.star_count, 'fa fa-star': i <= review.star_count }">
+                        </span>
+                       
+                    </div>
+                </div>
+                <div class="text-end">
+                    <label>{{review.createdAt | date}}</label>
+                </div>
+            </div>
+            <div class="col-12 mt-2">
+                <p>{{review.review}}</p>
+            </div>
+            <!-- <div class="d-flex align-items-center justify-content-between fw-bold mt-1">
+                <label ><i class="fa-regular fa-share-from-square"></i> Share</label>
+                <label><i class="fa-regular fa-comment"></i> Comment</label>
+                <label><i class="fa-regular fa-thumbs-up"></i> Helpful (2)</label>
+            </div> -->
+            </div>
+            <pagination-controls style="float:right;font-size: small;" (pageChange)="p = $event"></pagination-controls>
+        </div>
+        <div *ngIf="!showReview || showReview.length === 0" class="col-12 text-center">
+            <img src="../../../assets/No data-Found.png" class="img-fluid object-fit-cover" height="300px" width="300px" alt="">
+        </div>
+    </div>
+    </div>

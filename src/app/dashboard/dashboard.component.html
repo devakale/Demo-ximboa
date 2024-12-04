@@ -1,0 +1,506 @@
+<!-- <div class="container-fluid " style="background-color: var(--bodyColor);">
+  <div class="row">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="0"
+          class="active bg-dark" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" class="bg-dark" data-bs-target="#carouselExampleInterval" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" class="bg-dark" data-bs-target="#carouselExampleInterval" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active"
+          style="background-image: url('../../assets/img1.jpg'); background-position: right; background-size: cover;object-fit: cover; height: 500px;"
+          data-bs-interval="5000">
+          <div class="container">
+            <div class="row h-100 mt-5">
+              <div class="col-5 py-3">
+                <p class=" fw-bold " style="font-size: 20px;color: #265BBD;">CONNECT.SHARE.GROW</p>
+                <h1 class="mt-0" style="font-size: 55px;font-weight: 800;">NETWORK WITH EXPERTS GAIN INSIGHT</h1>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="carousel-item"
+          style="background-image: url('../../assets/img2.jpg'); background-position: right; background-size: cover;height: 500px;"
+          data-bs-interval="4000">
+          <div class="container">
+            <div class="row h-100 mt-5">
+              <div class="col-5 py-3">
+                <p><span  style="font-size: 55px;font-weight: 800;">EMPOWER</span> <br><span class="fw-bold fs-3">YOUR
+                    EXPERTISE,</span><br><span  style="font-size: 55px;font-weight: 800;">AMPLIFY</span><br><b
+                    class="fs-3">YOUR IMPACT</b></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="carousel-item"
+          style="background-image: url('../../assets/img3.jpg'); background-position: right; background-size: cover;height: 500px;">
+          <div class="container">
+            <div class="row h-100 mt-5">
+              <div class="col-5 py-3 ">
+                <h1 style="font-size: 55px;font-weight: 800;">JOIN FOR BETTER FUTURE</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+<div class="container-fluid" style="background-color: var(--bodyColor);">
+  <div class="row">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="0" class="active bg-dark"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" class="bg-dark" data-bs-target="#carouselExampleInterval" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" class="bg-dark" data-bs-target="#carouselExampleInterval" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner ">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url('../../assets/img1.jpg');"
+          data-bs-interval="5000">
+          <div class="container  d-flex align-items-center">
+            <div class="row w-100">
+              <div class="col-8 col-md-7 col-lg-5  text-md-start  text-dark">
+                <p class=" mb-2 " style="color: #265BBD;">CONNECT. SHARE. GROW</p>
+                <h1 class="display-6 ">NETWORK WITH EXPERTS, GAIN INSIGHT</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url('../../assets/img2.jpg');" data-bs-interval="4000">
+          <div class="container  d-flex align-items-center">
+            <div class="row w-100">
+              <div class="col-8 col-md-7 col-lg-5   text-md-start px-3 text-dark">
+                <p class=" ">
+                  <span class=" heading">EMPOWER</span> <br>
+                  <span class=" subheading">YOUR EXPERTISE,</span><br>
+                  <span class=" heading">AMPLIFY</span><br>
+                  <span class=" subheading">YOUR IMPACT</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image: url('../../assets/img3.jpg');">
+          <div class="container  d-flex align-items-center">
+            <div class="row w-100">
+              <div class="col-8 col-md-7 col-lg-5  text-md-start px-3 text-dark">
+                <p class="display-6">JOIN FOR A BETTER FUTURE</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Top category -->
+<div class="container-fluid " style="background-color: var(--WhiteColor);">
+  <div class="container mt-5">
+    <div class="col-sm-12 my-3">
+      <h4 class="text-center fsizeblue m-0 p-0">EXPLORE</h4>
+      <h1 class="text-center fsize m-0 p-0">Our Top Categories</h1>
+    </div>
+
+    <div class="row justify-content-around pt-3">
+
+      <div *ngFor="let category of visibleCategories()" class="col-sm-12 col-md-5 col-lg-4   mt-3 rounded  mb-2"
+        [routerLink]="['/relevance']" [queryParams]="{ category: category.category_name }">
+        <div class="p-3 d-flex align-items-center gap-2 border shadow-sm rounded box-hover" style="cursor: pointer;">
+          <img src="{{category.category_image}}" alt="">
+          <div>
+            <p class="m-0 categoryheading">{{category?.category_name}}</p>
+            <p class="m-0 categorysubtitle">{{truncatecategorytitle(category?.Sub_title)}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-end mt-2">
+        <p class=" ViewmoreArrow" data-bs-toggle="modal" data-bs-target="#categorymodel">View More <i
+            class="fa-solid fa-arrow-right"></i> </p>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="categorymodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">All Categories</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div *ngFor="let category of ShowAllCategory "
+                  class="col-sm-12 col-md-5 col-lg-4   mt-3 rounded box-hover mb-2" [routerLink]="['/relevance']"
+                  [queryParams]="{ category: category.category_name }" data-bs-dismiss="modal" aria-label="Close">
+                  <div class="p-3 d-flex align-items-center gap-2 border shadow-sm rounded" style="cursor: pointer;">
+                    <img src="{{category.category_image}}" alt="">
+                    <div>
+                      <p class="m-0 categoryheading">{{category?.category_name}}</p>
+                      <p class="m-0 categorysubtitle">{{category?.Sub_title}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Trainer List Code Strat From Here -->
+<div class="container-fluid" style="background-color: var(--bodyColor);">
+  <div class="container ">
+    <div class="py-5">
+      <h4 class="text-center fsizeblue  m-0 p-0">MEET</h4>
+      <h1 class="text-center fsize m-0 p-0">Top Trainers</h1>
+    </div>
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 mt-3">
+      <div *ngFor="let trainer of visibleTrainer()" class="col-sm-12 col-md-6 col-lg-3  mb-3">
+        <div class="card trainercard " style="margin-top: 40%;border: none;"
+          routerLink="/coursedetails/{{trainer.t_id}}">
+          <div class="text-center mt-3" style="position: relative;">
+            <img src="{{trainer.trainer_image}}" class="object-fit-cover rounded-circle img-class" alt="...">
+          </div>
+          <button class="btn btn-sm rounded viewtrainerbtn">View Profile</button>
+          <div class="card-body text-center">
+            <button class="btn btn-sm TrainerFlag rounded ">{{trainer.flag}}</button><br>
+            <div class="trainer-name-container pt-2">
+              <h5 class="card-title  text-capitalize" (mouseenter)="showFullName = true"
+                (mouseleave)="showFullName = false">
+                {{ truncateBusinessName(trainer.Business_Name) }}
+              </h5>
+              <span *ngIf="showFullName" class="full-name rounded">{{ trainer.Business_Name }}</span>
+            </div>
+            <p class="text-capitalize"> {{trainer.f_Name}} {{trainer.l_Name }}</p>
+            <div class="social-icons">
+              <i href="https://www.facebook.com" class="fa-brands fa-facebook  rounded-pill social-icons1"></i>
+              <i href="https://twitter.com" target="_blank" class="fab fa-twitter rounded-pill social-icons1"></i>
+              <i href="https://www.instagram.com" target="_blank"
+                class="fab fa-instagram rounded-pill social-icons1"></i>
+              <i href="https://www.linkedin.com" target="_blank"
+                class="fab fa-linkedin-in  rounded-pill social-icons1"></i>
+              <i href="https://www.youtube.com" target="_blank" class="fab fa-youtube  rounded-pill social-icons1"></i>
+            </div>
+          </div>
+          <div class="card-footer d-flex justify-content-between trainercardfooter">
+            <p> <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i> {{trainer.ratings}}</p>
+            <b>{{trainer.course_count}} Courses</b>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="text-end">
+      <p routerLink="/relevance/alltrainer" class="me-3 my-0 pb-3 cursor-pointer ViewmoreArrow">View More <i
+          class="fa-solid fa-arrow-right"></i> </p>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Ximboa workflow -->
+<div class="container-fluid p-4" style="background-color: var(--TextColor);">
+  <div class="container px-5">
+    <div class="py-3">
+      <h4 class="text-center text-light fsizeblue m-0 p-0">HOW</h4>
+      <h1 class="text-center text-light fsize m-0 p-0">Ximboa Works</h1>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col-sm-12 col-md-5 col-lg-2 my-3  d-flex align-items-center justify-content-center py-4 rounded"
+        style="background-color: #ffffff;">
+        <div class="text-center">
+          <img src="../../assets/CONNECT ICON NEW.png" height="60px" width="60px" alt=""><br>
+          <small class="workflowwords">CONNECT</small>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-5 col-lg-1 me-3 workflowhide">
+        <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
+          <path id="line-1" fill="none" stroke="white" stroke-width="14" stroke-dasharray="1000"
+            stroke-dashoffset="1000" d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
+            16.7 4.4 108.5 34.2 209.9-18.6" />
+          <g id="arrow-group-1" transform="translate(0, -5)">
+            <path id="arrow-1" fill="white" d="M0 0 l47.1 6 -29.8 33.3 -17.3 -39.3z" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="downarrowhide text-center">
+        <i class="fa-solid fa-down-long" style="color: var(--WhiteColor);"></i>
+      </div>
+
+      <div class="col-sm-12 col-md-5 col-lg-2 my-3  d-flex align-items-center justify-content-center py-4 rounded"
+        style="background-color: #ffffff;">
+        <div class="text-center">
+          <img src="../../assets/SHARE ICON NEW.png" height="60px" width="60px" alt=""><br>
+          <small class="workflowwords">SHARE</small>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-5 col-lg-1 me-3 workflowhide">
+        <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
+          <path id="line-2" fill="none" stroke="white" stroke-width="14" stroke-dasharray="1000"
+            stroke-dashoffset="1000" d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
+            16.7 4.4 108.5 34.2 209.9-18.6" />
+          <g id="arrow-group-2" transform="translate(0, -5)">
+            <path id="arrow-2" fill="white" d="M0 0 l47.1 6 -29.8 33.3 -17.3 -39.3z" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="downarrowhide text-center">
+        <i class="fa-solid fa-down-long" style="color: var(--WhiteColor);"></i>
+      </div>
+
+      <div class="col-sm-12 col-md-5 col-lg-2 my-3  d-flex align-items-center justify-content-center py-4 rounded"
+        style="background-color: #ffffff;">
+        <div class="text-center">
+          <img src="../../assets/EARN ICON NEW.png" height="60px" width="60px" alt=""><br>
+          <small class="workflowwords">EARN</small>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-5 col-lg-1 me-3 workflowhide">
+        <svg stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 550 300">
+          <path id="line-3" fill="none" stroke="white" stroke-width="14" stroke-dasharray="1000"
+            stroke-dashoffset="1000" d="M18.9 128.6c62 33 186 99 311.3 28.5 37.3-21 77.3-108-81.2-92.3-175.5 17.3-6 116.6 54.4 132.5 
+            16.7 4.4 108.5 34.2 209.9-18.6" />
+          <g id="arrow-group-3" transform="translate(0, -5)">
+            <path id="arrow-3" fill="white" d="M0 0 l47.1 6 -29.8 33.3 -17.3 -39.3z" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="downarrowhide text-center">
+        <i class="fa-solid fa-down-long" style="color: var(--WhiteColor);"></i>
+      </div>
+
+      <div class="col-sm-12 col-md-5 col-lg-2 my-3  d-flex align-items-center justify-content-center py-4 rounded"
+        style="background-color: #ffffff;">
+        <div class="text-center">
+          <img src="../../assets/LEARN ICON NEW.png" height="60px" width="60px" alt=""><br>
+          <small class="workflowwords">LEARN</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- lasted Tranding Courses -->
+<div class="container-fluid " style="background-color: var(--bodyColor);">
+  <div class="container pt-5 pb-3">
+    <div>
+      <h4 class="text-center fsizeblue m-0 p-0">DISCOVER</h4>
+      <h1 class="text-center fsize m-0 p-0">World's Best Courses</h1>
+    </div>
+
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-5">
+      <div *ngFor="let allcourses of visibleCourses()" class="col-sm-12 col-md-6 col-lg-3 mb-3">
+        <div class="card" routerLink="/couserenroll/{{allcourses._id}}">
+          <!-- <img src="{{allcourses.thumbnail_image}}" class="card-img-top img-fluid"  alt="..." > -->
+          <img *ngIf="allcourses.thumbnail_image; else dummyImage" src="{{allcourses.thumbnail_image}}"
+            class="card-img-top img-fluid" alt="Image">
+          <ng-template #dummyImage>
+            <img src="../../assets/courses dummy.jpg" alt="Dummy Image" class="card-img-top img-fluid ">
+          </ng-template>
+          <div class="card-body mb-0 pb-0 ">
+            <div class="d-flex align-items-center trainer-name-container justify-content-between ">
+              <h5 class="card-title  text-capitalize" (mouseenter)="showcourseName = true"
+                (mouseleave)="showcourseName = false">
+                {{ truncatecourseName(allcourses.course_name) }}
+              </h5>
+              <h5 *ngIf="showcourseName" class="card-title full-name rounded"
+                style="font-size: 14px; margin-top: 79px;">{{allcourses.course_name}}</h5>
+              <span class="text-center">
+                <span class="poppins-semibold-italic"> {{allcourses.online_offline}} </span>
+                <i *ngIf="allcourses.online_offline === 'Online'" class="fas fa-circle-play text-muted m-0 p-0"></i>
+                <i *ngIf="allcourses.online_offline === 'Offline'" class="fas fa-location-dot m-0 p-0"></i>
+              </span>
+            </div>
+            <span class="">{{allcourses.category_name}}</span>
+
+            <div class="d-flex align-items-center justify-content-between mt-1 mb-0 m-0 p-0">
+              <div class="d-flex align-items-center gap-2  trainer-name-container">
+                <p><img src="{{allcourses.trainer_image}}" class="rounded-circle" height="20px" width="20px" alt="">
+                </p>
+                <p class="card-title  text-capitalize pb-1" (mouseenter)="showbusinessName = true"
+                  (mouseleave)="showbusinessName = false">
+                  {{ trunbusinessName(allcourses.business_Name) }}
+                </p>
+                <p *ngIf="showbusinessName" class=" full-name rounded" style="font-size: 13px; margin-top: 79px;">
+                  {{allcourses.business_Name }}</p>
+              </div>
+              <p>{{allcourses.course_rating }} <i class="fa-solid fa-star fs-5" style="color: #FFAE06;"></i></p>
+            </div>
+
+            <button class="left-side-top rounded px-2">{{allcourses.course_flag}}</button>
+
+          </div>
+          <div class="card-footer d-flex align-items-center justify-content-between">
+            <p><i class="fa-solid fa-list-ul"></i> Duration : {{allcourses.course_duration }} Weeks</p>
+            <p style="font-family: Poppins;font-weight: bold;color: var(--TextColor);font-size: 20px;">{{
+              getFormattedPrice(allcourses.course_price) }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-end">
+      <p routerLink="/relevance/Allcourses" class="me-3 ViewmoreArrow">View More <i
+          class="fa-solid fa-arrow-right "></i> </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- lasted Tranding Product -->
+<div class="container-fluid " style="background-color: var(--WhiteColor);">
+  <div class="container mt-4">
+    <div class="py-3 mb-3">
+      <div>
+        <h4 class="text-center fsizeblue m-0 p-0">VIEW OUR</h4>
+        <h1 class="text-center fsize m-0 p-0">Top Selling Products</h1>
+      </div>
+      <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-5">
+        <div *ngFor="let product of visibleProduct()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+          <div class="card productcard">
+            <img src="{{product.productImage}}" routerLink="/productdetails/{{product._id}}" class="card-img-top img-fluid"
+              alt="...">
+            <button routerLink="/productdetails/{{product._id}}" class="btn btn-light rounded onproducthover">Add to cart</button>
+            <button class="onproducthoverflag rounded px-2">{{product.identityFlag}}</button>
+            <div class="card-body text-center mb-0 pt-0 trainer-name-container">
+              <div class="d-flex align-items-center justify-content-between mt-1">
+                <p class="m-0 p-0 text-end w-25"></p>
+                <div class="w-50 text-center">
+                  <ng-container *ngFor="let star of starsArray; let i = index">
+                    <i class="fa-solid fa-star"
+                      [ngStyle]="{ 'color': i < (product.avgRating ) ? '#FFAE06' : '#d3d3d3' }"></i>
+                  </ng-container>
+                </div>
+                <small class="m-0 p-0 text-end w-25">{{product.productFlag}}</small>
+              </div>
+              <h5 class="card-title  text-capitalize" (mouseenter)="showproductName = true"
+                (mouseleave)="showproductName = false">
+                {{ trunproductName(product.productName) }}
+              </h5>
+              <p *ngIf="showproductName" class=" full-name rounded" style="font-size: 13px;">{{product.productName }}
+              </p>
+              <!-- <h5 class="card-title">{{product.productName}}</h5> -->
+              <p class="text-muted poppins-regular" style="font-size: 12px;">{{product.categoryName}}</p>
+              <div class="d-flex align-items-center justify-content-between">
+                <i class="fa-solid fa-cart-shopping fs-5" style="color: #417CE8;"></i>
+                <span class="d-flex align-items-center gap-2">
+                  <small class="text-decoration-line-through">{{getFormattedPrice(product.productPrice)}}</small>
+                  <b
+                    style="font-family: Poppins;color: var(--TextColor);font-size: 20px;">{{getFormattedPrice(product.productSellingPrice)}}</b>
+                </span>
+                <i class="fa-regular fa-heart fs-5" style="color: #417CE8;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-end">
+        <p routerLink="/relevance/allproducts" class="me-3 ViewmoreArrow">View More <i
+            class="fa-solid fa-arrow-right "></i> </p>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Event List Code Start From Here -->
+<div class="container-fluid " style="background-color: var(--bodyColor);">
+  <div class="container">
+    <div class="rowbgcolor py-3">
+      <div>
+        <h4 class="text-center fsizeblue m-0 p-0">VIEW OUR</h4>
+        <h1 class="text-center fsize m-0 p-0">Latest Events</h1>
+      </div>
+
+      <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 gx-3 mt-5">
+        <div *ngFor="let Event of visibleEvent()" class="col-sm-12 col-md-3 col-lg-3 mb-3">
+          <div class="card" routerLink="/eventdetails/{{Event._id}}">
+            <img *ngIf="Event.eventImage; else dummyImage" src="{{Event.eventImage}}" class="card-img-top img-fluid"
+              alt="...">
+            <ng-template #dummyImage>
+              <img src="../../assets/event dummy.jpg" alt="Dummy Image" class="card-img-top img-fluid">
+            </ng-template>
+            <button class="onproducthoverflag rounded px-2">{{Event.identityFlag}}</button>
+            <div class="card-body text">
+              <div class="d-flex align-items-center justify-content-between gap-1 trainer-name-container">
+                <span>
+                  <label class="poppins-semibold-italic text-muted" style="font-size: 12px;">{{Event.eventDate | date:
+                    'MMM'}}</label><br>
+                  <span class="poppins-semibold-italic" style="font-size: 24px;">{{Event.eventDate | date: 'dd'}}</span>
+                </span>
+                <span class="">
+                  <p class="card-title poppins-semibold-italic text-center  text-capitalize"
+                    (mouseenter)="showeventName = true" (mouseleave)="showeventName = false">
+                    {{ truneventName(Event.eventName) }}
+                  </p>
+                  <p *ngIf="showeventName" class="card-title full-name rounded" style="font-size: 14px; ">
+                    {{Event.eventName}}</p>
+                </span>
+                <span class="text-center">
+                  <span class="poppins-semibold-italic"> {{Event.mode}} </span> <br>
+                  <i *ngIf="Event.mode === 'Online'" class="fas fa-circle-play text-muted"></i>
+                  <i *ngIf="Event.mode === 'Offline'" class="fas fa-location-dot"></i>
+                </span>
+              </div>
+              <div class="d-flex align-items-center gap-2 justify-content-center">
+                <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                  width="30px" alt="">
+                <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                  width="30px" alt="">
+                <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                  width="30px" alt="">
+                <img src="../../assets/Rohit sharma.jpg" class="rounded-circle object-fit-cover" height="30px"
+                  width="30px" alt="">
+                <label class="p-2 border rounded-circle"> +30</label>
+              </div>
+              <div class="d-flex align-items-center justify-content-between mt-2 mb-0">
+                <button class="btn btn-sm rounded-pill px-3 text-light poppins-regular"
+                  style="font-size: 14px;background-color: var(--TextColor);">Book Seat</button>
+                <button class="btn btn-sm rounded-pill px-3 text-light poppins-regular"
+                  style="font-size: 14px;background-color: var(--btndarkColor);">View More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-end">
+        <p routerLink="/relevance/allevents" class="me-3 ViewmoreArrow">View More <i
+            class="fa-solid fa-arrow-right "></i> </p>
+      </div>
+    </div>
+  </div>
+</div>
